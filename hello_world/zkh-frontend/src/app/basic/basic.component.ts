@@ -16,7 +16,7 @@ export class BasicComponent {
   }
   private Init() {
     this.service.getHello().subscribe((message: any) => {
-      this.msg=message;
+      this.msg=message.ans;
     })
   }
 }
