@@ -11,9 +11,8 @@ services:
     - ${ADMIN_DB_OUT}:${ADMIN_DB_IN}
   backend:
     container_name: backend
-    build: ./zkh
-    env_file: 
-      - db.conf
+    build: ./backend
+    env_file:
       - .env
     ports: 
     - ${PORT_BACKEND_OUT}:${PORT_BACKEND_IN}
