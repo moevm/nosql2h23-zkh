@@ -29,13 +29,13 @@ public class Appeal {
 
     private LocalDateTime createdAt;
 
-    @Relationship(value = "Controls", type = "INCOMING")
+    @Relationship(type = "Controls", direction = Relationship.Direction.INCOMING)
     public Manager manager;
 
-    @Relationship(value = "Creates", type = "INCOMING")
+    @Relationship(type = "Creates", direction = Relationship.Direction.INCOMING)
     public Tenant tenant;
 
-    @Relationship(value = "WorksOn", type = "INCOMING")
+    @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
 
     public Appeal(Long id, String name, String description, String status, String feedback, String address, Float longitude, Float latitude, String type, LocalDateTime createdAt) {

@@ -32,10 +32,10 @@ public class Activity {
 
     private LocalDateTime dateEnd;
 
-    @Relationship(value = "Creates", type = "INCOMING")
+    @Relationship(type = "Creates", direction = Relationship.Direction.INCOMING)
     public Manager manager;
 
-    @Relationship(value = "WorksOn", type = "INCOMING")
+    @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
     public Activity(Long id, String name, String description, String status, String feedback, String address, Float longitude, Float latitude, String type, LocalDateTime dateStart, LocalDateTime dateEnd) {
         this.id = id;

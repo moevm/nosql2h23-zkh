@@ -6,7 +6,7 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.util.Set;
 
-public class Worker {
+public class Worker implements User {
     @Id
     @GeneratedValue
     private final Long id;
@@ -31,6 +31,8 @@ public class Worker {
         this.login = login;
         this.password = password;
     }
+
+    @Override
     public Long getId() {
         return id;
     }
@@ -65,5 +67,10 @@ public class Worker {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getRole(){
+        return "Worker";
     }
 }

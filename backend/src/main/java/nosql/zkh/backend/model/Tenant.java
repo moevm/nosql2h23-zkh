@@ -2,8 +2,11 @@ package nosql.zkh.backend.model;
 
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Relationship;
 
-public class Tenant {
+import java.util.Set;
+
+public class Tenant implements User {
     @Id
     @GeneratedValue
     private final Long id;
@@ -19,6 +22,8 @@ public class Tenant {
 
     private String password;
 
+    @Relationship(type = "Creates")
+    public Set<Appeal> createsAppeals;
 
     public Tenant(Long id, String name, String address, String phoneNumber, String login, String password) {
         this.id = id;
@@ -29,6 +34,7 @@ public class Tenant {
         this.password = password;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -71,5 +77,9 @@ public class Tenant {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    @Override
+    public String getRole(){
+        return "Tenant";
     }
 }

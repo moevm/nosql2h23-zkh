@@ -7,8 +7,8 @@ import java.util.HashSet;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Relationship;
-
-public class Manager {
+import org.springframework.data.neo4j.core.schema.Relationship.Direction;
+public class Manager implements User{
 
     @Id
     @GeneratedValue
@@ -28,7 +28,7 @@ public class Manager {
     @Relationship(type = "Creates")
     public Set<Activity> createsActivity;
 
-    @Relationship(value = "BelongsTo", type = "INCOMING")
+    @Relationship(type = "BelongsTo", direction = Direction.INCOMING)
     public List<Message> messageList;
     public Manager(Long id, String name, String phoneNumber, String login, String password) {
         this.id = id;
@@ -38,6 +38,7 @@ public class Manager {
         this.password = password;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -79,5 +80,9 @@ public class Manager {
             controlsAppeals = new HashSet<>();
         }
         controlsAppeals.add(appeal);
+    }
+    @Override
+    public String getRole(){
+        return "Manager";
     }
 }

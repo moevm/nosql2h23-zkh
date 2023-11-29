@@ -15,13 +15,13 @@ public class Message {
 
     private LocalDateTime date;
 
-    @Relationship(value = "BelongsTo")
+    @Relationship(type = "BelongsTo")
     public Appeal appeal;
 
-    @Relationship(value = "Sent", type = "INCOMING")
+    @Relationship(type = "Sent", direction = Relationship.Direction.INCOMING)
     public Manager manager;
 
-    @Relationship(value = "Sent", type = "INCOMING")
+    @Relationship(type = "Sent", direction = Relationship.Direction.INCOMING)
     public Tenant tenant;
     public Message(Long id, String message, LocalDateTime date) {
         this.id = id;
