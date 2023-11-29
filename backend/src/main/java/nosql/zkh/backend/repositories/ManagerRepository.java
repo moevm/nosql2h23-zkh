@@ -5,7 +5,9 @@ import org.springframework.data.repository.Repository;
 
 public interface ManagerRepository extends Repository<Manager, Long> {
     Manager findByLoginAndPassword(String login, String password);
+
     Manager findById(Long id);
+    Manager save(Manager manager);
 
     Manager findAllById(Long id);
 }

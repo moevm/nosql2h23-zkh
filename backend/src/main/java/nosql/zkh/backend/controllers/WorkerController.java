@@ -4,6 +4,7 @@ import nosql.zkh.backend.dto.WorkerDto;
 import nosql.zkh.backend.model.Worker;
 import nosql.zkh.backend.services.WorkerService;
 import org.modelmapper.ModelMapper;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 public class WorkerController {
     private final WorkerService workerService;
 

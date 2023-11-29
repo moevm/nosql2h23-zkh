@@ -5,15 +5,13 @@ import nosql.zkh.backend.model.Activity;
 import nosql.zkh.backend.model.Worker;
 import nosql.zkh.backend.services.ActivityService;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 public class ActivityController {
 
     private final ActivityService activityService;
@@ -32,8 +30,8 @@ public class ActivityController {
     }
 
     @PostMapping("/activity")
-    public ActivityDto create(@RequestBody NewActivityDto newActivityDto){
-        return convertToActivityDto(activityService.createActivity(convertToActivity(newActivityDto), newActivityDto.getId_manager()));
+    public ActivityDto create(@RequestParam("manager_id") Long manager_id,@RequestBody NewActivityDto newActivityDto){
+        return convertToActivityDto(activityService.createActivity(convertToActivity(newActivityDto), manager_id));
     }
     private ActivityDto convertToActivityDto(Activity activity){
         ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);

@@ -1,5 +1,6 @@
 package nosql.zkh.backend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
@@ -12,7 +13,7 @@ public class Manager implements User{
 
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
     private String name;
 
@@ -23,10 +24,10 @@ public class Manager implements User{
     private String password;
 
     @Relationship(type = "Controls")
-    public Set<Appeal> controlsAppeals;
+    public List<Appeal> controlsAppeals;
 
     @Relationship(type = "Creates")
-    public Set<Activity> createsActivity;
+    public List<Activity> createsActivity;
 
     @Relationship(type = "BelongsTo", direction = Direction.INCOMING)
     public List<Message> messageList;
@@ -38,9 +39,16 @@ public class Manager implements User{
         this.password = password;
     }
 
+    public Manager(){
+
+    }
     @Override
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -77,12 +85,6 @@ public class Manager implements User{
         this.password = password;
     }
 
-    public void addControlsAppeals(Appeal appeal){
-        if (controlsAppeals == null) {
-            controlsAppeals = new HashSet<>();
-        }
-        controlsAppeals.add(appeal);
-    }
     @Override
     public String getRole(){
         return "manager";

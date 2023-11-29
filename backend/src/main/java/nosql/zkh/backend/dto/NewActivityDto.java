@@ -11,7 +11,6 @@ public class NewActivityDto {
 
     private LocalDateTime dateEnd;
 
-    private Long id_manager;
 
     private String address;
 
@@ -22,7 +21,6 @@ public class NewActivityDto {
         this.description = description;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.id_manager = id_manager;
         this.address = address;
         this.geotag = geotag;
     }
@@ -52,14 +50,6 @@ public class NewActivityDto {
 
     public void setDateEnd(LocalDateTime dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public Long getId_manager() {
-        return id_manager;
-    }
-
-    public void setId_manager(Long id_manager) {
-        this.id_manager = id_manager;
     }
 
     public String getAddress() {

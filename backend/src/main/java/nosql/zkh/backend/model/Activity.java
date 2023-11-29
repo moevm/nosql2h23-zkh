@@ -22,9 +22,9 @@ public class Activity {
 
     private String address;
 
-    private Float longitude;
+    private Double longitude;
 
-    private Float latitude;
+    private Double latitude;
 
     private String type;
 
@@ -37,7 +37,7 @@ public class Activity {
 
     @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
-    public Activity(Long id, String title, String description, String status, String feedback, String address, Float longitude, Float latitude, String type, LocalDateTime dateStart, LocalDateTime dateEnd) {
+    public Activity(Long id, String title, String description, String status, String feedback, String address, Double longitude, Double latitude, String type, LocalDateTime dateStart, LocalDateTime dateEnd) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -102,19 +102,19 @@ public class Activity {
         this.address = address;
     }
 
-    public Float getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Float longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    public Float getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 

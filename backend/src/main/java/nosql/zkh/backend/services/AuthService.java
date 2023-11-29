@@ -25,6 +25,7 @@ public class AuthService {
 
     public User auth(String login, String password){
         User user = managerRepository.findByLoginAndPassword(login, password);
+        user.getRole();
         if(user == null){
             user = workerRepository.findByLoginAndPassword(login, password);
         }
