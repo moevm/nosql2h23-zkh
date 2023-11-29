@@ -6,9 +6,9 @@
                     {{ scheduleService.selected_work.title }}
                 </div>
                 <div class="date">
-                    {{ (scheduleService.selected_work.start | date: "dd.MM.YYYY HH:MM:ss") + 
-                    (scheduleService.selected_work.end ? "-" : "") + 
-                    (scheduleService.selected_work.end ? (scheduleService.selected_work.end | date: "dd.MM.YYYY HH:MM:ss") 
+                    {{ (scheduleService.selected_work.dateStart | date: "dd.MM.YYYY HH:MM:ss") + 
+                    (scheduleService.selected_work.dateEnd ? "-" : "") + 
+                    (scheduleService.selected_work.dateEnd ? (scheduleService.selected_work.dateEnd | date: "dd.MM.YYYY HH:MM:ss") 
                     : "")}}
                 </div>
             </div>
