@@ -1,0 +1,19 @@
+<div class="unassembled-appeal-list-container">
+    <button class="active">
+        Обращения
+    </button>
+    <div class="scroll-wrap">
+        <div class="unassembled-appeal"
+            *ngFor="let appeal of managerUnassembledService.unassembled_appels"
+            [class.selected]="appeal.id === managerUnassembledService.selected_unassembled_appeal?.id"
+            (click)="selectAppeal(appeal.id)"
+        >
+            <div class="title">
+                {{ appeal.title }}
+            </div>
+            <div class="date">
+                {{ appeal.date | date: "dd.MM.YYYY" }}
+            </div>
+        </div>
+    </div>
+</div>

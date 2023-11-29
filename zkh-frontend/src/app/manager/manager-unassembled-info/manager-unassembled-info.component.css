@@ -1,0 +1,105 @@
+.unassembled-appeal-info-container {
+    background-color: var(--primary-background);
+    height: 100%;
+    border: 2px solid var(--sign-out-text);
+    border-radius: 30px;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-text);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+button.non-map {
+    width: 170px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid var(--sign-out-text);
+    color: black;
+    cursor: pointer;
+    background: var(--sign-out-text);
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+}
+
+button.map {
+    width: 170px;
+    height: 30px;
+    position: absolute;
+    z-index: 1000000;
+    top: 22px;
+    right: 22px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid var(--sign-out-text);
+    color: black;
+    cursor: pointer;
+    background: var(--sign-out-text);
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+}
+
+.buttons {
+    display: flex;
+    margin-top: 20px;
+    height: 30px;
+}
+
+.buttons button {
+    width: 170px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--sign-out-text);
+    font-size: 16px;
+    margin-left: auto;
+    background: var(--switch-border);
+    border: 1px solid var(--switch-border);
+    color: white;
+}
+
+.unassembled-appeal-description {
+    height: calc(100% - 100px);
+    background: var(--sign-out-text);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.title, .date {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.description {
+    height: calc(100% - 90px);
+    overflow: hidden;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.address {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

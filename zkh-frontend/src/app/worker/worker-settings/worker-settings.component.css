@@ -1,0 +1,75 @@
+.worker-settings-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.settings-scroll-wrap {
+    padding: 0 10%;
+}
+
+.layout {
+    height: calc(50% - 212px);
+}
+
+.field {
+    width: 100%;
+    display: flex;
+    margin: 14px 0;
+}
+
+.field input {
+    width: calc(100% - 125px);
+}
+
+input {
+    color: var(--popup-menu-text);
+    background: var(--settings-input-background);
+    border: 1px solid var(--sign-out-text);
+    outline: none;
+    height: 30px;
+    padding: 6px 15px 6px 15px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: var(--sign-out-text);
+    opacity: 1;
+}
+
+input:-ms-input-placeholder {
+    color: var(--sign-out-text);
+}
+
+input::-ms-input-placeholder {
+    color: var(--sign-out-text);
+}
+
+.label {
+    font-size: 15px;
+    color: var(--popup-menu-text);
+    width: 125px;
+    font-weight: bolder;
+    align-self: center;
+}
+
+.btn-container {
+    margin-top: 20px;
+    display: flex;
+}
+
+button {
+    background: var(--switch-border);
+    width: 140px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid var(--switch-border);
+    color: white;
+    font-size: 14px;
+    line-height: 28px;
+    cursor: pointer;
+    margin-left: auto;
+}
+

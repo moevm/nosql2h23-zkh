@@ -1,0 +1,52 @@
+.manager-schedule-info-container {
+    background-color: var(--primary-background);
+    height: 100%;
+    padding: 20px;
+    border: 2px solid var(--sign-out-text);
+    border-radius: 30px;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-text);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.schedule-description {
+    height: 100%;
+    background: var(--sign-out-text);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.title, .date {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.description {
+    height: calc(100% - 110px);
+    overflow: hidden;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.manager, .address {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

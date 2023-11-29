@@ -1,0 +1,28 @@
+<div class="manager-schedule-info-container">
+    <ng-container *ngIf="scheduleService.selected_work">
+        <div class="schedule-description">
+            <div class="header">
+                <div class="title">
+                    {{ scheduleService.selected_work.title }}
+                </div>
+                <div class="date">
+                    {{ (scheduleService.selected_work.start | date: "dd.MM.YYYY HH:MM:ss") + 
+                    (scheduleService.selected_work.end ? "-" : "") + 
+                    (scheduleService.selected_work.end ? (scheduleService.selected_work.end | date: "dd.MM.YYYY HH:MM:ss") 
+                    : "")}}
+                </div>
+            </div>
+            <div class="description">
+                {{ scheduleService.selected_work.description }}
+            </div>
+            <div class="footer">
+                <div class="manager">
+                    Менеджер: {{ scheduleService.selected_work.manager }}
+                </div>
+                <div class="address" *ngIf="scheduleService.selected_work.address">
+                    Адрес: {{ scheduleService.selected_work.address }}
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

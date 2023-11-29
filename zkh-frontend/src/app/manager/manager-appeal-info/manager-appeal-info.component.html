@@ -1,0 +1,45 @@
+<div class="manager-appeal-info-container"
+    [style.padding.px]="map ? 0 : 20"
+>
+    <ng-container *ngIf="managerAppealService.selected_appeal && !map">
+        <button class="non-map" (click)="map = true; refreshMarkers()">
+            Показать на карте
+        </button>
+        <div class="appeal-description">
+            <div class="header">
+                <div class="title">
+                    {{ managerAppealService.selected_appeal.title }}
+                </div>
+                <div class="date">
+                    {{ managerAppealService.selected_appeal.date | date: "dd.MM.YYYY HH:mm:ss" }}
+                </div>
+            </div>
+            <div class="description">
+                {{ managerAppealService.selected_appeal.description }}
+            </div>
+            <div class="footer">
+                <div class="status">
+                    Статус: {{ managerAppealService.selected_appeal.status }}
+                </div>
+                <div class="manager">
+                    Менеджер: {{ managerAppealService.selected_appeal.manager }}
+                </div>
+                <div class="address">
+                    Адрес: {{ managerAppealService.selected_appeal.address }}
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="managerAppealService.selected_appeal && map">
+        <app-map
+            [markers]="managerAppealService.markers"
+            [active_marker]="managerAppealService.active_marker"
+            [refresh_markers]="managerAppealService.refresh_markers"
+            (onMarkerClick)="onMarkerClick($event)"
+        >
+        </app-map>
+        <button class="map" (click)="map = false">
+            Вернуться
+        </button>
+    </ng-container>
+</div>

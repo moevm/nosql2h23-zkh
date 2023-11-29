@@ -1,0 +1,57 @@
+.header {
+    height: 7%;
+    border-bottom: 2px solid var(--header-underline);
+    display: flex;
+    padding: 0 15%;
+    position: relative;
+    background: var(--primary-background);
+    font-size: 18px;
+    justify-content: space-between;
+}
+
+.menu-bars {
+    display: flex;
+    align-self: center;
+}
+
+.menu-title {
+    color: var(--header-text);
+    padding-left: 10px;
+    align-self: center;
+}
+
+.menu-icon {
+    display: flex;
+}
+
+.menu-icon:hover {
+    cursor: pointer;
+}
+
+.menu-icon svg {
+    align-self: center;
+}
+
+.menu-icon svg path {
+    fill: var(--header-text);
+}
+
+.sign-out-title {
+    color: var(--sign-out-text);
+    padding-left: 10px;
+    align-self: center;
+}
+
+.sign-out-title:hover {
+    cursor: pointer;
+    color: var(--header-text);
+}
+
+.brand {
+    color: var(--header-text);
+    align-self: center;
+}
+
+.single {
+    justify-content: center;
+}

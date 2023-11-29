@@ -1,0 +1,36 @@
+<div class="manager-settings-container">
+    <div class="layout"></div>
+    <div class="settings-scroll-wrap">
+        <form [formGroup]="form">
+            <!-- <div class="last-name-field field">
+                <div class="label">Фамилия</div>
+                <input formControlName="last_name" type="text" class="title"
+                    placeholder="Введите фамилию"
+                >
+            </div>
+            <div class="first-name-field field">
+                <div class="label">Имя</div>
+                <input formControlName="first_name" type="text" class="title"
+                    placeholder="Введите имя"
+                >
+            </div> -->
+            <div class="patronymic-name-field field">
+                <div class="label">Отчество</div>
+                <input formControlName="name" type="text" class="title"
+                    placeholder="Введите ФИО"
+                >
+            </div>
+            <div class="phone-field field">
+                <div class="label">Телефон</div>
+                <input formControlName="phone" type="text" class="title"
+                    placeholder="+7 (___) ___-__-__"
+                >
+            </div>
+        </form>
+        <div class="btn-container">
+            <button (click)="saveSettings()">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
