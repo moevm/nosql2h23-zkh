@@ -31,7 +31,7 @@ export class RequestService {
 
   bind_appeal(id_appeal: number, manager_id: number) {
     return this.http.put(
-      `/appeal/${id_appeal}?manager_id=${manager_id}`, {}
+      `http://localhost:9334/appeal/${id_appeal}?manager_id=${manager_id}`, {}
     )
   }
 
