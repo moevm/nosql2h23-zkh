@@ -1,0 +1,27 @@
+<div class="popup-menu-container">
+    <div class="popup-header">
+        <div class="popup-user">
+            <div class="user">
+                {{ authService.name }}
+            </div>
+            <div class="role">
+                {{ authService.role }}
+            </div>
+        </div>
+    </div>
+    <div class="popup-nav" [ngSwitch]="authService.role">
+        <ul class="menu-navbar" *ngSwitchCase="Role.WORKER">
+            <li class="link"><a routerLink="/home">Мои задачи</a></li>
+            <li class="link"><a routerLink="/settings">Настройки</a></li>
+            <li class="link"><a class="logout" id="logout-link" (click)="logout()">Выйти</a></li>
+        </ul>
+        <ul class="menu-navbar" *ngSwitchCase="Role.MANAGER">
+            <li class="link"><a routerLink="/unassembled">Неразобранные обращения</a></li>
+            <!-- <li class="link"><a routerLink="/my">Мои обращения</a></li> -->
+            <li class="link"><a routerLink="/home">Все обращения</a></li>
+            <li class="link"><a routerLink="/schedule">Плановые работы</a></li>
+            <li class="link"><a routerLink="/settings">Настройки</a></li>
+            <li class="link"><a class="logout" id="logout-link" (click)="logout()">Выйти</a></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+.pages-container {
+    height: 93%;
+    padding-left: 15%;
+    padding-right: 15%;
+    background: var(--primary-background);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.app-wrapper {
+    height: 100vh;
+    overflow: hidden;
+}

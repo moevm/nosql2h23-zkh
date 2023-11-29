@@ -1,0 +1,45 @@
+<div class="worker-task-info-container"
+    [style.padding.px]="map ? 0 : 20"
+>
+    <ng-container *ngIf="workerTaskService.selected_task && !map">
+        <button class="non-map" (click)="map = true; refreshMarkers()">
+            Показать на карте
+        </button>
+        <div class="task-description">
+            <div class="header">
+                <div class="title">
+                    {{ workerTaskService.selected_task.title }}
+                </div>
+                <div class="date">
+                    {{ workerTaskService.selected_task.date | date: "dd.MM.YYYY HH:mm:ss" }}
+                </div>
+            </div>
+            <div class="description">
+                {{ workerTaskService.selected_task.description }}
+            </div>
+            <div class="footer">
+                <div class="status">
+                    Статус: {{ workerTaskService.selected_task.status }}
+                </div>
+                <div class="manager">
+                    Менеджер: {{ workerTaskService.selected_task.manager }}
+                </div>
+                <div class="address">
+                    Адрес: {{ workerTaskService.selected_task.address }}
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="workerTaskService.selected_task && map">
+        <app-map
+            [markers]="workerTaskService.markers"
+            [active_marker]="workerTaskService.active_marker"
+            [refresh_markers]="workerTaskService.refresh_markers"
+            (onMarkerClick)="onMarkerClick($event)"
+        >
+        </app-map>
+        <button class="map" (click)="map = false">
+            Вернуться
+        </button>
+    </ng-container>
+</div>

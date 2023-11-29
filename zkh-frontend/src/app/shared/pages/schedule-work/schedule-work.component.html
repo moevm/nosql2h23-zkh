@@ -1,0 +1,10 @@
+<div class="schedule-work-container">
+    <div class="left-container">
+        <app-manager-schedule-work></app-manager-schedule-work>
+    </div>
+    <div class="layout"></div>
+    <div class="right-container">
+        <app-manager-schedule-info *ngIf="!scheduleService.create_schedule"></app-manager-schedule-info>
+        <app-manager-create-schedule *ngIf="scheduleService.create_schedule"></app-manager-create-schedule>
+    </div>
+</div>

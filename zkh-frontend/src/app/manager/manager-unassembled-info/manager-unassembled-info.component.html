@@ -1,0 +1,46 @@
+<div class="unassembled-appeal-info-container"
+    [style.padding.px]="map ? 0 : 20"
+>
+    <ng-container *ngIf="managerUnassembledService.selected_unassembled_appeal && !map">
+        <button class="non-map" (click)="map = true; refreshMarkers()">
+            Показать на карте
+        </button>
+        <div class="unassembled-appeal-description">
+            <div class="header">
+                <div class="title">
+                    {{ managerUnassembledService.selected_unassembled_appeal.title }}
+                </div>
+                <div class="date">
+                    {{ managerUnassembledService.selected_unassembled_appeal.date | date: "dd.MM.YYYY HH:mm:ss" }}
+                </div>
+            </div>
+            <div class="description">
+                {{ managerUnassembledService.selected_unassembled_appeal.description }}
+            </div>
+            <div class="footer">
+                <div class="address">
+                    Адрес: {{ managerUnassembledService.selected_unassembled_appeal.address }}
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="active" 
+                (click)="takeAppeal(managerUnassembledService.selected_unassembled_appeal.id)"
+            >
+                Взять обращение
+            </button>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="managerUnassembledService.selected_unassembled_appeal && map">
+        <app-map
+            [markers]="managerUnassembledService.markers"
+            [active_marker]="managerUnassembledService.active_marker"
+            [refresh_markers]="managerUnassembledService.refresh_markers"
+            (onMarkerClick)="onMarkerClick($event)"
+        >
+        </app-map>
+        <button class="map" (click)="map = false">
+            Вернуться
+        </button>
+    </ng-container>
+</div>
