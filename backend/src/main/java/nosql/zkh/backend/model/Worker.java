@@ -37,6 +37,7 @@ public class Worker implements User {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -45,6 +46,7 @@ public class Worker implements User {
         this.name = name;
     }
 
+    @Override
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -71,6 +73,6 @@ public class Worker implements User {
 
     @Override
     public String getRole(){
-        return "Worker";
+        return "worker";
     }
 }

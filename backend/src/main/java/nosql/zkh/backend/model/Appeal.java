@@ -12,7 +12,7 @@ public class Appeal {
     @GeneratedValue
     private final Long id;
 
-    private String name;
+    private String title;
     private String description;
 
     private String status;
@@ -27,7 +27,7 @@ public class Appeal {
 
     private String type;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime date;
 
     @Relationship(type = "Controls", direction = Relationship.Direction.INCOMING)
     public Manager manager;
@@ -38,9 +38,9 @@ public class Appeal {
     @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
 
-    public Appeal(Long id, String name, String description, String status, String feedback, String address, Float longitude, Float latitude, String type, LocalDateTime createdAt) {
+    public Appeal(Long id, String title, String description, String status, String feedback, String address, Float longitude, Float latitude, String type, LocalDateTime date) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.status = status;
         this.feedback = feedback;
@@ -48,19 +48,19 @@ public class Appeal {
         this.longitude = longitude;
         this.latitude = latitude;
         this.type = type;
-        this.createdAt = createdAt;
+        this.date = date;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -119,11 +119,11 @@ public class Appeal {
         this.type = type;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }

@@ -10,9 +10,9 @@ import java.util.List;
 public class Activity {
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
-    private String name;
+    private String title;
 
     private String description;
 
@@ -37,9 +37,9 @@ public class Activity {
 
     @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
-    public Activity(Long id, String name, String description, String status, String feedback, String address, Float longitude, Float latitude, String type, LocalDateTime dateStart, LocalDateTime dateEnd) {
+    public Activity(Long id, String title, String description, String status, String feedback, String address, Float longitude, Float latitude, String type, LocalDateTime dateStart, LocalDateTime dateEnd) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.status = status;
         this.feedback = feedback;
@@ -51,16 +51,23 @@ public class Activity {
         this.dateEnd = dateEnd;
     }
 
+    public Activity() {
+    }
+
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
-@RestController("/api")
+@RestController
 public class AuthController {
     private final AuthService authService;
 
@@ -27,7 +27,7 @@ public class AuthController {
     }
 
     private AuthDto convert(User user){
-        return new AuthDto(user.getId(), user.getRole());
+        return new AuthDto(user.getId(), user.getRole(), user.getPhoneNumber() , user.getName());
     }
 
     @ExceptionHandler

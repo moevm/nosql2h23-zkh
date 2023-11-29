@@ -39,6 +39,7 @@ public class Tenant implements User {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -55,6 +56,7 @@ public class Tenant implements User {
         this.address = address;
     }
 
+    @Override
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -80,6 +82,6 @@ public class Tenant implements User {
     }
     @Override
     public String getRole(){
-        return "Tenant";
+        return "tenant";
     }
 }

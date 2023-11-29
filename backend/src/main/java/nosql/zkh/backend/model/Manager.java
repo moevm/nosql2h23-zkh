@@ -43,6 +43,7 @@ public class Manager implements User{
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -51,6 +52,7 @@ public class Manager implements User{
         this.name = name;
     }
 
+    @Override
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -83,6 +85,6 @@ public class Manager implements User{
     }
     @Override
     public String getRole(){
-        return "Manager";
+        return "manager";
     }
 }
