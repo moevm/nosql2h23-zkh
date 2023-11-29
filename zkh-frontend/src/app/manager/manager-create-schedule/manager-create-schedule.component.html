@@ -1,0 +1,32 @@
+<div class="manager-create-schedule-container">
+    <form class="wrap" [formGroup]="form">
+        <div class="title-field field">
+            <input formControlName="title" type="text" class="title"
+                placeholder="Название плановой работы"
+            >
+        </div>
+        <div class="address-field field">
+            <input formControlName="address" type="text" class="title"
+                placeholder="Адрес"
+            >
+        </div>
+        <div class="date-field field">
+            <input formControlName="date" type="date" class="title"
+                placeholder="Дата"
+            >
+        </div>
+        <div class="description-field field">
+            <textarea formControlName="description" type="text" class="title"
+                placeholder="Описание плановой работы"
+            ></textarea>
+        </div>
+        <div class="buttons">
+            <button class="cancel" (click)="scheduleService.create_schedule = false">
+                Отменить
+            </button>
+            <button class="confirm" (click)="createSchedule()">
+                Создать
+            </button>
+        </div>
+    </form>
+</div>

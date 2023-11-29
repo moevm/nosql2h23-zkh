@@ -1,0 +1,19 @@
+<div class="worker-task-list-container">
+    <button class="active">
+        Список задач
+    </button>
+    <div class="scroll-wrap">
+        <div class="worker-task"
+            *ngFor="let task of workerTaskService.tasks"
+            [class.selected]="task.id === workerTaskService.selected_task?.id"
+            (click)="selectTask(task.id)"
+        >
+            <div class="title">
+                {{ task.title }}
+            </div>
+            <div class="date">
+                {{ task.date | date: "dd.MM.YYYY" }}
+            </div>
+        </div>
+    </div>
+</div>

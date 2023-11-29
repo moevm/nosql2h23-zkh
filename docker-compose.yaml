@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  database:
+    container_name: database
+    image: neo4j:latest
+    env_file: 
+      - database.conf
+      - .env
+    ports:
+    - ${DB_OUT}:${DB_IN}
+    - ${ADMIN_DB_OUT}:${ADMIN_DB_IN}
+  backend:
+    container_name: backend
+    build: ./backend
+    env_file:
+      - .env
+    ports: 
+    - ${PORT_BACKEND_OUT}:${PORT_BACKEND_IN}
+    depends_on:
+      - database
+  frontend:
+    container_name: frontend
+    build:
+      context: ./zkh-frontend
+    env_file:
+      - .env
+    ports:
+      - ${PORT_CLIENT_OUT}:${PORT_CLIENT_IN}
+    depends_on:
+      - backend

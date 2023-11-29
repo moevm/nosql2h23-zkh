@@ -1,0 +1,20 @@
+<div class="auth-container">
+    <div class="auth-form">
+        <div class="subtitle">
+            АВТОРИЗАЦИЯ
+        </div>
+        <form [formGroup]="authForm" (keydown)="submitOnEnter($event)">
+            <div class="field">
+                <input type="text" formControlName="username" autocomplete="off"
+                placeholder="Имя пользователя">
+            </div>
+            <div class="field">
+                <input type="password" formControlName="password" autocomplete="off"
+                placeholder="Пароль">
+            </div>
+            <button type="button" class="auth-button" (click)="login()">
+                ВХОД
+            </button>
+        </form>
+    </div>
+</div>

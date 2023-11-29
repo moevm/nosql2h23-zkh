@@ -1,0 +1,7 @@
+<div class="app-wrapper">
+  <app-popup-menu *ngIf="authService.logedIn && popUpService.visible" (mouseleave)="popUpService.switchVisibility()"></app-popup-menu>
+  <app-header></app-header>
+  <div class="pages-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

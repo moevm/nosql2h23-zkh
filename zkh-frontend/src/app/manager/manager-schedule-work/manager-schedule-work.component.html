@@ -1,0 +1,24 @@
+<div class="manager-schedule-list-container">
+    <button class="active">
+        Плановые работы
+    </button>
+    <div class="scroll-wrap">
+        <div class="manager-schedule"
+            *ngFor="let schedule of scheduleService.works"
+            [class.selected]="schedule.id === scheduleService.selected_work?.id"
+            (click)="selectScheduleWork(schedule.id)"
+        >
+            <div class="title">
+                {{ schedule.title }}
+            </div>
+            <div class="date">
+                {{ (schedule.dateStart | date: "dd.MM.YYYY HH:MM:ss") + (schedule.dateEnd ? "-" : "") + (schedule.dateEnd ? (schedule.dateEnd | date: "dd.MM.YYYY HH:MM:ss") : "")}}
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="active" (click)="scheduleService.create_schedule = true">
+            Создать работу
+        </button>
+    </div>
+</div>
