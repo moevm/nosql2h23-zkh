@@ -17,7 +17,7 @@
             </div>
             <div class="footer">
                 <div class="manager">
-                    Менеджер: {{ scheduleService.selected_work.manager }}
+                    Менеджер: {{ scheduleService.selected_work.manager.name }}
                 </div>
                 <div class="address" *ngIf="scheduleService.selected_work.address">
                     Адрес: {{ scheduleService.selected_work.address }}
