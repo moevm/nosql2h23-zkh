@@ -1,7 +1,7 @@
 export enum Role {
     WORKER = "worker",
-    TENANT = "manager",
-    MANAGER = "tenant"
+    TENANT = "tenant",
+    MANAGER = "manager"
 }
 
 export enum Status {
