@@ -20,7 +20,9 @@ public class ManagerService {
     private final DatabaseSelectionProvider databaseSelectionProvider;
 
     public ManagerService(ManagerRepository managerRepository,
-                          AppealRepository appealRepository, Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) {
+                          AppealRepository appealRepository,
+                          Neo4jClient neo4jClient,
+                          DatabaseSelectionProvider databaseSelectionProvider) {
         this.managerRepository = managerRepository;
         this.appealRepository = appealRepository;
         this.neo4jClient = neo4jClient;

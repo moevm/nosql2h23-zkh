@@ -23,7 +23,7 @@ public class RunAfterStartApp {
     public void runAfterStarApp(){
         if(!existEntity()){
             this.neo4jClient
-                    .query(LoadQuery.load("classpath:neo4j/init.cypher"))
+                    .query(LoadQuery.load("/usr/local/lib/init.cypher"))
                     .in(database())
                     .run();
         }
@@ -34,7 +34,7 @@ public class RunAfterStartApp {
 
     private boolean existEntity(){
         return Integer.parseInt(this.neo4jClient
-                .query(LoadQuery.load("classpath:neo4j/check.cypher"))
+                .query(LoadQuery.load("/usr/local/lib/check.cypher"))
                 .in(database())
                 .fetch()
                 .one().orElse(new HashMap<>())
