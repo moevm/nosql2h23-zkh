@@ -2,29 +2,24 @@ version: "3.9"
 services:
   database:
     container_name: database
-    image: neo4j:latest
+    image: neo4j:5.14.0-community-bullseye
     env_file:
       - database.conf
-      - .env
     ports:
-      - ${DB_OUT}:${DB_IN}
-      - ${ADMIN_DB_OUT}:${ADMIN_DB_IN}
+      - target: 7687
+      - "127.0.0.1:7474:7474"
   backend:
     container_name: backend
     build: ./backend
-    env_file:
-      - .env
     ports:
-      - ${PORT_BACKEND_OUT}:${PORT_BACKEND_IN}
+      - "127.0.0.1:9334:9334"
     depends_on:
       - database
   frontend:
     container_name: frontend
     build:
       context: ./zkh-frontend
-    env_file:
-      - .env
     ports:
-      - ${PORT_CLIENT_OUT}:${PORT_CLIENT_IN}
+      - "127.0.0.1:4202:4202"
     depends_on:
       - backend

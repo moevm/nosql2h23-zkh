@@ -2,7 +2,7 @@ events {}
 http {
     include /etc/nginx/mime.types;
     server {
-        listen ${PORT_CLIENT_IN};
+        listen 4202;
         server_name elisas;
         root /usr/share/nginx/html;
         index index.html;
