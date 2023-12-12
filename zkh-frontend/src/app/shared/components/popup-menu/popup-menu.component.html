@@ -4,22 +4,30 @@
             <div class="user">
                 {{ authService.name }}
             </div>
-            <div class="role">
-                {{ authService.role }}
+            <div class="role" [ngSwitch]="authService.role">
+                <span *ngSwitchCase="Role.WORKER">Работник</span>
+                <span *ngSwitchCase="Role.MANAGER">Менеджер</span>
+                <span *ngSwitchCase="Role.TENANT">Жилец</span>
             </div>
         </div>
     </div>
     <div class="popup-nav" [ngSwitch]="authService.role">
         <ul class="menu-navbar" *ngSwitchCase="Role.WORKER">
-            <li class="link"><a routerLink="/home">Мои задачи</a></li>
+            <li class="link"><a routerLink="/worker-tasks">Мои задачи</a></li>
             <li class="link"><a routerLink="/settings">Настройки</a></li>
             <li class="link"><a class="logout" id="logout-link" (click)="logout()">Выйти</a></li>
         </ul>
         <ul class="menu-navbar" *ngSwitchCase="Role.MANAGER">
-            <li class="link"><a routerLink="/unassembled">Неразобранные обращения</a></li>
-            <!-- <li class="link"><a routerLink="/my">Мои обращения</a></li> -->
-            <li class="link"><a routerLink="/home">Все обращения</a></li>
-            <li class="link"><a routerLink="/schedule">Плановые работы</a></li>
+            <li class="link"><a routerLink="/manager-unassembled">Неразобранные обращения</a></li>
+            <li class="link"><a routerLink="/manager-my-appeals">Мои обращения</a></li>
+            <li class="link"><a routerLink="/manager-all-appeals">Все обращения</a></li>
+            <li class="link"><a routerLink="/manager-shedule-work">Плановые работы</a></li>
+            <li class="link"><a routerLink="/settings">Настройки</a></li>
+            <li class="link"><a class="logout" id="logout-link" (click)="logout()">Выйти</a></li>
+        </ul>
+        <ul class="menu-navbar" *ngSwitchCase="Role.TENANT">
+            <li class="link"><a routerLink="/tenant-appeal-list">Список обращений</a></li>
+            <li class="link"><a routerLink="/tenant-appeal-history">История обращений</a></li>
             <li class="link"><a routerLink="/settings">Настройки</a></li>
             <li class="link"><a class="logout" id="logout-link" (click)="logout()">Выйти</a></li>
         </ul>

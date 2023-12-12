@@ -1,4 +1,4 @@
-<div class="worker-settings-container">
+<div class="tenant-settings-container">
     <div class="layout"></div>
     <div class="settings-scroll-wrap">
         <form [formGroup]="form">
@@ -6,6 +6,12 @@
                 <div class="label">ФИО</div>
                 <input formControlName="name" type="text" class="title"
                     placeholder="Введите ФИО"
+                >
+            </div>
+            <div class="address-field field">
+                <div class="label">Адрес</div>
+                <input formControlName="address" type="text" class="title"
+                    placeholder="Введите адрес проживания"
                 >
             </div>
             <div class="phone-field field">
@@ -22,4 +28,3 @@
         </div>
     </div>
 </div>
-
