@@ -14,15 +14,18 @@ public class AppealDto {
 
     private String address;
 
+    private String feedback;
+
     private GeotagDto geotag;
 
-    public AppealDto(Long id, String title, LocalDateTime date, ManagerDto manager, String description, String address, GeotagDto geotag) {
+    public AppealDto(Long id, String title, LocalDateTime date, ManagerDto manager, String description, String address, String feedback, GeotagDto geotag) {
         this.id = id;
         this.title = title;
         this.date = date;
         this.manager = manager;
         this.description = description;
         this.address = address;
+        this.feedback = feedback;
         this.geotag = geotag;
     }
 
@@ -83,5 +86,12 @@ public class AppealDto {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }

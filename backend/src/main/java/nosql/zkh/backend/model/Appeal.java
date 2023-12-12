@@ -7,10 +7,11 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 public class Appeal {
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
     private String title;
     private String description;
@@ -50,7 +51,7 @@ public class Appeal {
         this.type = type;
         this.date = date;
     }
-
+    public Appeal(){}
     public Long getId() {
         return id;
     }

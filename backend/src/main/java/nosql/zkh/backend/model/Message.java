@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Message {
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
     private String message;
 
@@ -23,10 +23,14 @@ public class Message {
 
     @Relationship(type = "Sent", direction = Relationship.Direction.INCOMING)
     public Tenant tenant;
+
     public Message(Long id, String message, LocalDateTime date) {
         this.id = id;
         this.message = message;
         this.date = date;
+    }
+
+    public Message() {
     }
 
     public Long getId() {

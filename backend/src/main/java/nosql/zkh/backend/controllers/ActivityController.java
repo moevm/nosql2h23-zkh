@@ -45,5 +45,4 @@ public class ActivityController {
         activity.setLongitude(newActivityDto.getGeotag().getLongitude());
         return activity;
     }
-
 }
