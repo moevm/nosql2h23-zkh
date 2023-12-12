@@ -1,4 +1,5 @@
 <div class="settings-container" [ngSwitch]="authService.role">
     <app-worker-settings *ngSwitchCase="Role.WORKER"></app-worker-settings>
     <app-manager-settings *ngSwitchCase="Role.MANAGER"></app-manager-settings>
+    <app-tenant-settings *ngSwitchCase="Role.TENANT"></app-tenant-settings>
 </div>

@@ -2,10 +2,12 @@
     <div class="left-container" [ngSwitch]="authService.role">
         <app-worker-task-list *ngSwitchCase="Role.WORKER"></app-worker-task-list>
         <app-manager-appeal-list *ngSwitchCase="Role.MANAGER"></app-manager-appeal-list>
+        <app-tenant-appeal-history *ngSwitchCase="Role.TENANT"></app-tenant-appeal-history>
     </div>
     <div class="layout"></div>
     <div class="right-container" [ngSwitch]="authService.role">
         <app-worker-task-info *ngSwitchCase="Role.WORKER"></app-worker-task-info>
         <app-manager-appeal-info *ngSwitchCase="Role.MANAGER"></app-manager-appeal-info>
+        <app-tenant-appeal-info *ngSwitchCase="Role.TENANT"></app-tenant-appeal-info>
     </div>
 </div>

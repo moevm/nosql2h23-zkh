@@ -3,11 +3,11 @@ import { ScheduleService } from 'src/app/manager/manager-services/schedule.servi
 import { RequestService } from '../../services/request.service';
 
 @Component({
-  selector: 'app-schedule-work',
-  templateUrl: './schedule-work.component.html',
-  styleUrls: ['./schedule-work.component.css']
+  selector: 'app-manager-schedule-work-page',
+  templateUrl: './manager-schedule-work-page.component.html',
+  styleUrls: ['./manager-schedule-work-page.component.css']
 })
-export class ScheduleWorkComponent implements OnInit {
+export class ManagerScheduleWorkPageComponent implements OnInit {
   constructor(
     public scheduleService: ScheduleService,
     private requestService: RequestService
@@ -28,3 +28,4 @@ export class ScheduleWorkComponent implements OnInit {
     this.scheduleService.create_schedule = false
   }
 }
+

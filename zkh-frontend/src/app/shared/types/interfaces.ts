@@ -58,6 +58,7 @@ export interface UserData {
     phoneNumber: string;
     role: Role;
     name: string;
+    address?: string;
 }
 
 export interface Manager {
