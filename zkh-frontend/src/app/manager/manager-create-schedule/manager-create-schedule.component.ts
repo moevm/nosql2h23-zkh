@@ -38,8 +38,8 @@ export class ManagerCreateScheduleComponent {
         name: this.authService.name
       },
       address: this.form.value.address,
-      dateStart: new Date(),
-      dateEnd: new Date()
+      dateStart: new Date(this.form.value.date as string),
+      dateEnd: undefined
     }).subscribe(
       response => {
         this.scheduleService.works.push(response)

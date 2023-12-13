@@ -17,6 +17,14 @@ export class RequestService {
     )
   }
 
+  get_all_appeals(): Observable<Appeal[]> {
+    return this.http.get<Appeal[]>(
+      `http://localhost:9334/appeal`
+    )
+  }
+
+
+
   get_unassembled(): Observable<UnassembledAppeal[]> {
     return this.http.get<UnassembledAppeal[]>(
       `http://localhost:9334/appeal/new`
