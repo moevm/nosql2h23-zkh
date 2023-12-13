@@ -2,32 +2,34 @@ package nosql.zkh.backend.services;
 
 import nosql.zkh.backend.model.Appeal;
 import nosql.zkh.backend.model.Message;
-import nosql.zkh.backend.repositories.AppealRepository;
-import nosql.zkh.backend.repositories.ManagerRepository;
-import nosql.zkh.backend.repositories.MessageRepository;
-import nosql.zkh.backend.repositories.TenantRepository;
+import nosql.zkh.backend.repositories.*;
 import org.springframework.data.neo4j.core.DatabaseSelectionProvider;
 import org.springframework.data.neo4j.core.Neo4jClient;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class AppealService {
     private final AppealRepository appealRepository;
+
     private final ManagerRepository managerRepository;
 
     private final MessageRepository messageRepository;
+
+    private final WorkerRepository workerRepository;
 
     private final TenantRepository tenantRepository;
     private final Neo4jClient neo4jClient;
     private final DatabaseSelectionProvider databaseSelectionProvider;
 
-    public AppealService(AppealRepository appealRepository, ManagerRepository managerRepository, MessageRepository messageRepository, TenantRepository tenantRepository, Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) {
+    public AppealService(AppealRepository appealRepository, ManagerRepository managerRepository, MessageRepository messageRepository, WorkerRepository workerRepository, TenantRepository tenantRepository, Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) {
         this.appealRepository = appealRepository;
         this.managerRepository = managerRepository;
         this.messageRepository = messageRepository;
+        this.workerRepository = workerRepository;
         this.tenantRepository = tenantRepository;
         this.neo4jClient = neo4jClient;
         this.databaseSelectionProvider = databaseSelectionProvider;
@@ -36,7 +38,12 @@ public class AppealService {
         return appealRepository.findByStatus("Новое обращение");
     }
 
-    public Appeal set(Long id_appeal, Long id_manager){
+    public List<Appeal> getAllAppeal(){
+        return appealRepository.findAll();
+    }
+
+
+    public Appeal addManageronAppeal(Long id_appeal, Long id_manager){
         neo4jClient.query("MATCH (a:Manager), (b:Appeal) " +
                         "WHERE Id(a) = $id_manager AND Id(b) = $id_appeal" +
                         " CREATE (a)-[: Controls]->(b) " +
@@ -52,6 +59,7 @@ public class AppealService {
 
     public Appeal createAppeal(Appeal appeal, Long tenant_id){
         appeal.setStatus("Новое обращение");
+        appeal.setFeedback("");
         appeal = appealRepository.save(appeal);
         appeal.tenant = tenantRepository.findById(tenant_id);
         return appealRepository.save(appeal);
@@ -74,5 +82,27 @@ public class AppealService {
         message.tenant = tenantRepository.findById(tenant_id);
         message.appeal = appealRepository.findById(appeal_id);
         return messageRepository.save(message);
+    }
+
+    public Appeal addWorkerOnAppeal(Long appeal_id, Long worker_id){
+        Appeal appeal = appealRepository.findById(appeal_id);
+        if(appeal.workerList == null)
+            appeal.workerList = new LinkedList<>();
+        appeal.workerList.add(workerRepository.findById(worker_id));
+        return appealRepository.save(appeal);
+    }
+    public List<Appeal> getAppealByWorker(Long id){
+        return workerRepository.findById(id).workAppeals.stream().toList();
+    }
+    public Appeal updateStatus(Long appeal_id, String status){
+        Appeal appeal = appealRepository.findById(appeal_id);
+        appeal.setStatus(status);
+        return appealRepository.save(appeal);
+    }
+
+    public Appeal addFeedback(Long appeal_id, String feedback){
+        Appeal appeal = appealRepository.findById(appeal_id);
+        appeal.setFeedback(feedback);
+        return appealRepository.save(appeal);
     }
 }

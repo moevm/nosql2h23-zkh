@@ -39,6 +39,9 @@ public class Appeal {
     @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
 
+    @Relationship(type = "BelongsTo", direction = Relationship.Direction.INCOMING)
+    public List<Message> messageList;
+
     public Appeal(Long id, String title, String description, String status, String feedback, String address, Double longitude, Double latitude, String type, LocalDateTime date) {
         this.id = id;
         this.title = title;

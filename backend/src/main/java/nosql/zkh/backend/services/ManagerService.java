@@ -1,7 +1,9 @@
 package nosql.zkh.backend.services;
 
+import nosql.zkh.backend.dto.SettingDto;
 import nosql.zkh.backend.model.Appeal;
 import nosql.zkh.backend.model.Manager;
+import nosql.zkh.backend.model.Worker;
 import nosql.zkh.backend.repositories.AppealRepository;
 import nosql.zkh.backend.repositories.ManagerRepository;
 import org.springframework.data.neo4j.core.DatabaseSelectionProvider;
@@ -24,5 +26,10 @@ public class ManagerService {
         return managerRepository.findAll();
     }
 
-
+    public Manager updateSettings(Long id, SettingDto setting){
+        Manager manager = managerRepository.findById(id);
+        manager.setName(setting.getName());
+        manager.setPhoneNumber(setting.getPhoneNumber());
+        return managerRepository.save(manager);
+    }
 }

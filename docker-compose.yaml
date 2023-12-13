@@ -4,11 +4,13 @@ services:
     container_name: database
     build: ./neo4j
     ports:
-      - "7687:7687"
-      - "7474:7474"
+      - ":7687"
+      - ":7474"
     environment:
       NEO4J_AUTH: neo4j/password
-
+    volumes:
+      - neo4j_data:/data/
+      - neo4j_logs:/logs/
   backend:
     container_name: backend
     build: ./backend
@@ -24,3 +26,7 @@ services:
       - "127.0.0.1:4202:4202"
     depends_on:
       - backend
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
