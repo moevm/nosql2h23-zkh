@@ -2,6 +2,8 @@ package nosql.zkh.backend.controllers;
 
 import nosql.zkh.backend.dto.*;
 import nosql.zkh.backend.model.Appeal;
+import nosql.zkh.backend.model.Manager;
+import nosql.zkh.backend.model.Worker;
 import nosql.zkh.backend.services.ManagerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -22,26 +24,20 @@ public class ManagerController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/manager/{id}/appeal")
-    public List<AppealDto> getAll(@PathVariable("id") Long id){
-        return managerService.getAppealByManager(id).stream().map(this::convertToAppealDto).collect(Collectors.toList());
-    }
-    @GetMapping("/appeal/new")
-    public List<AppealDto> getAllNew(){
-        return managerService.getNewAppeal().stream().map(this::convertToAppealDto).collect(Collectors.toList());
-    }
-    //put /appeal/{id_appeal}&manager_id=int - привязка менеджера к обращению, верну обращение
-
-    @PutMapping("/appeal/{id_appeal}")
-    public AppealDto setMAnagerOnAppeal(@PathVariable("id_appeal") Long id_appeal, @RequestParam("manager_id") Long manager_id){
-        return convertToAppealDto(managerService.set(id_appeal, manager_id));
-    }
-    private AppealDto convertToAppealDto(Appeal appeal){
-        AppealDto appealDto = modelMapper.map(appeal, AppealDto.class);
-        appealDto.setGeotag(new GeotagDto(appeal.getLatitude(), appeal.getLongitude()));
-        if(appeal.manager != null)
-            appealDto.setManager(new ManagerDto(appeal.manager.getId(), appeal.manager.getName()));
-        return appealDto;
+    @GetMapping("/manager")
+    public List<ManagerDto> getAllManagers(){
+        return managerService.getAllManagers().stream().map(this::convertToManagerDto).collect(Collectors.toList());
     }
 
+    @PutMapping("/manager/{id}")
+    public SettingDto updateSetting(@PathVariable("id") Long id, @RequestBody SettingDto settingDto){
+        return convertToSettingDto(managerService.updateSettings(id, settingDto));
+    }
+
+    private ManagerDto convertToManagerDto(Manager manager){
+        return modelMapper.map(manager, ManagerDto.class);
+    }
+    private SettingDto convertToSettingDto(Manager manager){
+        return modelMapper.map(manager, SettingDto.class);
+    }
 }

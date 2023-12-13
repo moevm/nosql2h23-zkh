@@ -1,6 +1,7 @@
 package nosql.zkh.backend.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class AppealDto {
     private Long id;
@@ -8,22 +9,58 @@ public class AppealDto {
 
     private LocalDateTime date;
 
-    private ManagerDto manager;
+    private UserDto manager;
 
     private String description;
 
     private String address;
 
+    private String feedback;
+
     private GeotagDto geotag;
 
-    public AppealDto(Long id, String title, LocalDateTime date, ManagerDto manager, String description, String address, GeotagDto geotag) {
+    private List<MessageDto> messages;
+
+    private UserDto tenant;
+
+    private List<UserDto> workers;
+
+    public List<MessageDto> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<MessageDto> messages) {
+        this.messages = messages;
+    }
+
+    public UserDto getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(UserDto tenant) {
+        this.tenant = tenant;
+    }
+
+    public List<UserDto> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<UserDto> workersDto) {
+        this.workers = workersDto;
+    }
+
+    public AppealDto(Long id, String title, LocalDateTime date, UserDto manager, String description, String address, String feedback, GeotagDto geotag, List<MessageDto> messages, UserDto tenant, List<UserDto> workers) {
         this.id = id;
         this.title = title;
         this.date = date;
         this.manager = manager;
         this.description = description;
         this.address = address;
+        this.feedback = feedback;
         this.geotag = geotag;
+        this.messages = messages;
+        this.tenant = tenant;
+        this.workers = workers;
     }
 
     public AppealDto() {
@@ -53,11 +90,11 @@ public class AppealDto {
         this.date = date;
     }
 
-    public ManagerDto getManager() {
+    public UserDto getManager() {
         return manager;
     }
 
-    public void setManager(ManagerDto manager) {
+    public void setManager(UserDto manager) {
         this.manager = manager;
     }
 
@@ -83,5 +120,12 @@ public class AppealDto {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }

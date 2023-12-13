@@ -1,6 +1,7 @@
 package nosql.zkh.backend.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ActivityDto {
     private Long id;
@@ -18,7 +19,9 @@ public class ActivityDto {
 
     private GeotagDto geotag;
 
-    public ActivityDto(Long id, String title, LocalDateTime dateStart, LocalDateTime dateEnd, ManagerDto manager, String description, String address, GeotagDto geotag) {
+    private List<UserDto> workers;
+
+    public ActivityDto(Long id, String title, LocalDateTime dateStart, LocalDateTime dateEnd, ManagerDto manager, String description, String address, GeotagDto geotag, List<UserDto> workers) {
         this.id = id;
         this.title = title;
         this.dateStart = dateStart;
@@ -27,6 +30,7 @@ public class ActivityDto {
         this.description = description;
         this.address = address;
         this.geotag = geotag;
+        this.workers = workers;
     }
 
     public ActivityDto() {
@@ -94,5 +98,13 @@ public class ActivityDto {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<UserDto> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<UserDto> workers) {
+        this.workers = workers;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Set;
 public class Worker implements User {
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
     private String name;
 
@@ -30,6 +30,9 @@ public class Worker implements User {
         this.phoneNumber = phoneNumber;
         this.login = login;
         this.password = password;
+    }
+
+    public Worker() {
     }
 
     @Override

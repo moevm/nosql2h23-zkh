@@ -9,7 +9,7 @@ import java.util.Set;
 public class Tenant implements User {
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
     private String name;
 
@@ -32,6 +32,9 @@ public class Tenant implements User {
         this.phoneNumber = phoneNumber;
         this.login = login;
         this.password = password;
+    }
+
+    public Tenant() {
     }
 
     @Override

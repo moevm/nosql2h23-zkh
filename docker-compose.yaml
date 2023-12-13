@@ -2,12 +2,15 @@ version: "3.9"
 services:
   database:
     container_name: database
-    image: neo4j:5.14.0-community-bullseye
-    env_file:
-      - database.conf
+    build: ./neo4j
     ports:
-      - target: 7687
-      - "127.0.0.1:7474:7474"
+      - ":7687"
+      - ":7474"
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - neo4j_data:/data/
+      - neo4j_logs:/logs/
   backend:
     container_name: backend
     build: ./backend
@@ -23,3 +26,7 @@ services:
       - "127.0.0.1:4202:4202"
     depends_on:
       - backend
+
+volumes:
+  neo4j_data:
+  neo4j_logs:

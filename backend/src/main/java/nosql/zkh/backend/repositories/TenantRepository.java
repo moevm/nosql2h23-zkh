@@ -5,4 +5,8 @@ import org.springframework.data.repository.Repository;
 
 public interface TenantRepository extends Repository<Tenant, Long> {
     Tenant findByLoginAndPassword(String login, String password);
+
+    Tenant findById(Long id);
+
+    Tenant save(Tenant tenant);
 }

@@ -11,7 +11,6 @@ public class NewActivityDto {
 
     private LocalDateTime dateEnd;
 
-
     private String address;
 
     private GeotagDto geotag;
