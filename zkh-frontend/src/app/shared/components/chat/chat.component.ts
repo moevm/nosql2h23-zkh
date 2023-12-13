@@ -18,12 +18,12 @@ export class ChatComponent {
   text: string = ""
 
   @Input() messages: Message[] = []
-  @Input() id_appeal: number = 0
+  @Input() id_appeal: number | undefined;
 
   @Output() onMessage = new EventEmitter<Message>();
    
   sendMessage() {
-    if (!this.text || !this.id_appeal)
+    if (!this.text || !this.id_appeal) return
     this.requestService.send_message(
       this.authService.id,
       this.authService.role,
