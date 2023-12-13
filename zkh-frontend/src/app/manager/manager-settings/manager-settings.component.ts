@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { RequestService } from 'src/app/shared/services/request.service';
-import * as saveAs from 'file-saver';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-manager-settings',
@@ -54,6 +54,7 @@ export class ManagerSettingsComponent {
     this.requestService.export().subscribe(
       response => {
         let file = new Blob([response], { type: 'text/xml;charset=utf-8' });
+        console.log(file)
         saveAs(file, 'db_dump.xml')
       }
     )
