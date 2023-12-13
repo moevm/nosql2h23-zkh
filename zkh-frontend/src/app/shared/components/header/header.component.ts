@@ -2,6 +2,7 @@ import { Component, NgZone } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { PopUpService } from '../../services/pop-up.service';
 import { Router } from '@angular/router';
+import { Role } from '../../types/enumerations';
 
 @Component({
   selector: 'app-header',
@@ -18,9 +19,12 @@ export class HeaderComponent {
 
   }
 
+  public Role = Role
+
   signOutClickHandler() {
     this.authService.logedIn = false
     this.popUpService.visible = false
+    this.popUpService.schedule_visible = false
     this.zone.run(() => { this.router.navigate(["/authorization"]) })
   }
 }

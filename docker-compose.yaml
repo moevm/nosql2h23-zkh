@@ -2,29 +2,31 @@ version: "3.9"
 services:
   database:
     container_name: database
-    image: neo4j:latest
-    env_file: 
-      - database.conf
-      - .env
+    build: ./neo4j
     ports:
-    - ${DB_OUT}:${DB_IN}
-    - ${ADMIN_DB_OUT}:${ADMIN_DB_IN}
+      - ":7687"
+      - ":7474"
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - neo4j_data:/data/
+      - neo4j_logs:/logs/
   backend:
     container_name: backend
     build: ./backend
-    env_file:
-      - .env
-    ports: 
-    - ${PORT_BACKEND_OUT}:${PORT_BACKEND_IN}
+    ports:
+      - "127.0.0.1:9334:9334"
     depends_on:
       - database
   frontend:
     container_name: frontend
     build:
       context: ./zkh-frontend
-    env_file:
-      - .env
     ports:
-      - ${PORT_CLIENT_OUT}:${PORT_CLIENT_IN}
+      - "127.0.0.1:4202:4202"
     depends_on:
       - backend
+
+volumes:
+  neo4j_data:
+  neo4j_logs:

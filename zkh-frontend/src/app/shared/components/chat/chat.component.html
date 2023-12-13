@@ -1,0 +1,18 @@
+<div class="chat-container">
+    <div class="messages">
+        <div class="message" *ngFor="let message of messages"
+            [class.mine]="message.owner.id === authService.id"
+        >
+            <div class="text">
+                {{ message.message }}
+            </div>
+            <div class="date">
+                {{ message.date | date: "dd.MM.YYYY HH:MM" }}
+            </div>
+        </div>
+    </div>
+    <div class="input-message">
+        <input placeholder="Введите сообщение" type="text" [(ngModel)]="text">
+        <button (click)="sendMessage()">Отправить</button>
+    </div>
+</div>

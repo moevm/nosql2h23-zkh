@@ -55,3 +55,14 @@
 .single {
     justify-content: center;
 }
+
+.notifications {
+    position: fixed;
+    right: calc(15% + 150px);
+    cursor: pointer;
+    align-self: center;
+}
+
+.notifications-icon svg path {
+    fill: var(--header-text);
+}

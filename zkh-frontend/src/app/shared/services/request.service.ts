@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Role } from '../types/enumerations';
 import { Observable } from 'rxjs';
-import { ManagerAppeal, ScheduleWork, ScheduleWorkCreate, UnassembledAppeal, UserData, WorkerTask } from '../types/interfaces';
+import { Appeal, Activity, ActivityCreate, UnassembledAppeal, UserData, Message } from '../types/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +17,26 @@ export class RequestService {
     )
   }
 
+  get_all_appeals(): Observable<Appeal[]> {
+    return this.http.get<Appeal[]>(
+      `http://localhost:9334/appeal`
+    )
+  }
+
+  get_all_activities(): Observable<Activity[]> {
+    return this.http.get<Activity[]>(
+      `http://localhost:9334/activity`
+    )
+  }
+
   get_unassembled(): Observable<UnassembledAppeal[]> {
     return this.http.get<UnassembledAppeal[]>(
       `http://localhost:9334/appeal/new`
     )
   }
 
-  get_appeal(role: Role, id: number): Observable<WorkerTask[] | ManagerAppeal[]> {
-    return this.http.get<WorkerTask[] | ManagerAppeal[]>(
+  get_appeal(role: Role, id: number): Observable<Appeal[]> {
+    return this.http.get<Appeal[]>(
       `http://localhost:9334/${role.toLowerCase()}/${id}/appeal`
     )
   }
@@ -35,15 +47,35 @@ export class RequestService {
     )
   }
 
-  create_schedule_work(manager_id: number, work: ScheduleWorkCreate): Observable<ScheduleWork> {
-    return this.http.post<ScheduleWork>(
+  create_appeal(tenant_id: number, body: any): Observable<Appeal> {
+    return this.http.post<Appeal>(
+      `http://localhost:9334/appeal?tenant_id=${tenant_id}`, body
+    )
+  }
+
+  save_settings(role: Role, id: number, name: string, phone: string): Observable<{name: string, phoneNumber: string}> {
+    return this.http.put<{name: string, phoneNumber: string}>(
+      `http://localhost:9334/${role.toLowerCase()}/${id}`, {name: name, phoneNumber: phone}
+    )
+  }
+
+  send_message(id: number, role: Role, id_appeal: number, msg: string): Observable<Message> {
+    return this.http.post<Message>(
+      `http://localhost:9334/appeal/${id_appeal}/${role.toLowerCase()}/${id}/msg`,
+      {
+        message: msg,
+        date: new Date()
+      }
+    )
+  }
+
+  create_schedule_work(manager_id: number, work: ActivityCreate): Observable<Activity> {
+    return this.http.post<Activity>(
       `http://localhost:9334/activity?manager_id=${manager_id}`, work
     )
   }
 
-  get_schedule_work(): Observable<ScheduleWork[]> {
-    return this.http.get<ScheduleWork[]>(
-      `http://localhost:9334/activity`
-    )
+  export(): Observable<string> {
+    return this.http.get(`http://localhost:9334/export`, {responseType: 'text'})
   }
 }

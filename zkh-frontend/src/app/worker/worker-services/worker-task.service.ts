@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Status } from 'src/app/shared/types/enumerations';
-import { GeoMarker, WorkerTask } from 'src/app/shared/types/interfaces';
+import { GeoMarker, Appeal } from 'src/app/shared/types/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -44,10 +44,10 @@ export class WorkerTaskService {
     }
   }
 
-  tasks: WorkerTask[] = [
+  tasks: Appeal[] = [
     
   ]
 
-  selected_task: WorkerTask | null = this.tasks[0]
+  selected_task: Appeal | null = this.tasks[0]
 
 }

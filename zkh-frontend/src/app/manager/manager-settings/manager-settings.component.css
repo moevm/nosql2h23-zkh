@@ -73,3 +73,7 @@ button {
     margin-left: auto;
 }
 
+.export-wrap {
+    display: flex;
+    justify-content: space-between;
+}

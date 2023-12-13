@@ -3,11 +3,11 @@ import { RequestService } from '../../services/request.service';
 import { ManagerUnassembledService } from 'src/app/manager/manager-services/manager-unassembled.service';
 
 @Component({
-  selector: 'app-unassembled',
-  templateUrl: './unassembled.component.html',
-  styleUrls: ['./unassembled.component.css']
+  selector: 'app-manager-unassembled-page',
+  templateUrl: './manager-unassembled-page.component.html',
+  styleUrls: ['./manager-unassembled-page.component.css']
 })
-export class UnassembledComponent implements OnInit {
+export class ManagerUnassembledPageComponent implements OnInit {
   constructor(
     private requestService: RequestService,
     private managerUnassembledService: ManagerUnassembledService

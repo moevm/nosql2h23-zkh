@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { RequestService } from 'src/app/shared/services/request.service';
 
 @Component({
   selector: 'app-worker-settings',
@@ -10,15 +11,14 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class WorkerSettingsComponent implements OnInit {
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    public requestService: RequestService
   ) {
 
   }
 
   form: FormGroup = new FormGroup({
-    first_name: new FormControl(""),
-    last_name: new FormControl(""),
-    patronymic_name: new FormControl(""),
+    name: new FormControl(""),
     phone: new FormControl("")
   })
 
@@ -28,9 +28,16 @@ export class WorkerSettingsComponent implements OnInit {
   }
 
   saveSettings() {
-    console.log(
+    this.requestService.save_settings(
+      this.authService.role,
+      this.authService.id,
       this.form.value.name,
       this.form.value.phone
+    ).subscribe(
+      response => {
+        this.form.controls['name'].setValue(response.name)
+        this.form.controls['phone'].setValue(response.phoneNumber)
+      }
     )
   }
 }

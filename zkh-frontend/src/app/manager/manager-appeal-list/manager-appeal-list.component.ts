@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ManagerAppealService } from '../manager-services/manager-appeal.service';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -17,6 +17,8 @@ export class ManagerAppealListComponent implements OnInit {
 
   }
 
+  @Input() mine: boolean = false
+
   openFilters(event: Event) {
     event.stopPropagation()
     this.filtersOpened = !this.filtersOpened
@@ -30,14 +32,26 @@ export class ManagerAppealListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.requestService.get_appeal(this.authService.role, this.authService.id).subscribe(
-      response => {
-        this.managerAppealService.appeals = [...response]
-        this.managerAppealService.selected_appeal = this.managerAppealService.appeals[0]
-        this.managerAppealService.markers = this.managerAppealService.getMarkers()
-        this.managerAppealService.active_marker = this.managerAppealService.getActiveMarker()
-        this.managerAppealService.refreshMarkers()
-      }
-    )
+    if (this.mine) {
+      this.requestService.get_appeal(this.authService.role, this.authService.id).subscribe(
+        response => {
+          this.managerAppealService.appeals = [...response]
+          this.managerAppealService.selected_appeal = this.managerAppealService.appeals[0]
+          this.managerAppealService.markers = this.managerAppealService.getMarkers()
+          this.managerAppealService.active_marker = this.managerAppealService.getActiveMarker()
+          this.managerAppealService.refreshMarkers()
+        }
+      )
+    } else {
+      this.requestService.get_all_appeals().subscribe(
+        response => {
+          this.managerAppealService.appeals = [...response]
+          this.managerAppealService.selected_appeal = this.managerAppealService.appeals[0]
+          this.managerAppealService.markers = this.managerAppealService.getMarkers()
+          this.managerAppealService.active_marker = this.managerAppealService.getActiveMarker()
+          this.managerAppealService.refreshMarkers()
+        }
+      )
+    }
   }
 }

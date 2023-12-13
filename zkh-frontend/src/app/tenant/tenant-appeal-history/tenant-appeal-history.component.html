@@ -1,0 +1,24 @@
+<div class="tenant-appeal-list-container">
+    <div class="buttons">
+        <button class="active">
+            Список обращений
+        </button>
+    </div>
+    <div class="scroll-wrap">
+        <div class="tenant-appeal"
+            *ngFor="let appeal of tenantAppealHistoryService.appeals"
+            [class.selected]="appeal.id === tenantAppealHistoryService.selected_appeal?.id"
+            (click)="selectAppeal(appeal.id)"
+        >
+            <div class="title">
+                {{ appeal.title }}
+            </div>
+            <div class="status">
+                {{ appeal.status }}
+            </div>
+        </div>
+    </div>
+    <button class="create active" (click)="tenantAppealHistoryService.create_appeal = true">
+        Создать обращение
+    </button>
+</div>

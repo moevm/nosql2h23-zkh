@@ -9,12 +9,15 @@ import java.util.Set;
 public class Tenant implements User {
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
     private String name;
 
     private String address;
 
+    private Double longitude;
+
+    private Double latitude;
 
     private String phoneNumber;
 
@@ -25,13 +28,18 @@ public class Tenant implements User {
     @Relationship(type = "Creates")
     public Set<Appeal> createsAppeals;
 
-    public Tenant(Long id, String name, String address, String phoneNumber, String login, String password) {
+    public Tenant(Long id, String name, String address, Double longitude, Double latitude, String phoneNumber, String login, String password) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.phoneNumber = phoneNumber;
         this.login = login;
         this.password = password;
+    }
+
+    public Tenant() {
     }
 
     @Override
@@ -83,5 +91,21 @@ public class Tenant implements User {
     @Override
     public String getRole(){
         return "tenant";
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }

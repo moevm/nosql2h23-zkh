@@ -1,5 +1,7 @@
 <div class="app-wrapper">
   <app-popup-menu *ngIf="authService.logedIn && popUpService.visible" (mouseleave)="popUpService.switchVisibility()"></app-popup-menu>
+  <app-tenant-schedule-modal *ngIf="authService.logedIn && popUpService.schedule_visible" (mouseleave)="popUpService.schedule_visible = false">
+  </app-tenant-schedule-modal>
   <app-header></app-header>
   <div class="pages-container">
     <router-outlet></router-outlet>

@@ -1,0 +1,32 @@
+<div class="tenant-create-appeal-container">
+    <form class="wrap" [formGroup]="form">
+        <div class="title-field field">
+            <input formControlName="title" type="text" class="title"
+                placeholder="Название обращения"
+            >
+        </div>
+        <div class="type-field field">
+            <input formControlName="type" type="text" class="title"
+                placeholder="Тип обращения"
+            >
+        </div>
+        <div class="address-field field">
+            <input formControlName="address" type="text" class="title"
+                placeholder="Адрес"
+            >
+        </div>
+        <div class="description-field field">
+            <textarea formControlName="description" type="text" class="title"
+                placeholder="Описание обращения"
+            ></textarea>
+        </div>
+        <div class="buttons">
+            <button class="cancel" (click)="tenantAppealHistoryService.create_appeal = false">
+                Отменить
+            </button>
+            <button class="confirm" (click)="createAppeal()">
+                Создать
+            </button>
+        </div>
+    </form>
+</div>

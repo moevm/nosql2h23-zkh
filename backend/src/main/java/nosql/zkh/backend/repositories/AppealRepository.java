@@ -9,5 +9,6 @@ public interface AppealRepository extends Repository<Appeal, Long> {
     List<Appeal> findByStatus(String status);
     Appeal findById(Long id);
 
+    List<Appeal> findAll();
     Appeal save(Appeal appeal);
 }

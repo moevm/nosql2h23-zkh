@@ -1,0 +1,56 @@
+<div class="tenant-appeal-info-container">
+    <div class="appeal-info-wrap">
+        <div class="appeal-info-container"
+            [style.padding.px]="map ? 0 : 20"
+        >
+            <ng-container *ngIf="tenantAppealHistoryService.selected_appeal && !map">
+                <button class="non-map" (click)="map = true; refreshMarkers()">
+                    Показать на карте
+                </button>
+                <div class="appeal-description">
+                    <div class="header">
+                        <div class="title">
+                            {{ tenantAppealHistoryService.selected_appeal.title }}
+                        </div>
+                        <div class="date">
+                            {{ tenantAppealHistoryService.selected_appeal.date | date: "dd.MM.YYYY HH:mm:ss" }}
+                        </div>
+                    </div>
+                    <div class="description">
+                        {{ tenantAppealHistoryService.selected_appeal.description }}
+                    </div>
+                    <div class="footer">
+                        <div class="status">
+                            Статус: {{ tenantAppealHistoryService.selected_appeal.status }}
+                        </div>
+                        <div class="manager">
+                            Менеджер: {{ tenantAppealHistoryService.selected_appeal.manager.name }}
+                        </div>
+                        <div class="address">
+                            Адрес: {{ tenantAppealHistoryService.selected_appeal.address }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="tenantAppealHistoryService.selected_appeal && map">
+                <app-map
+                    [markers]="tenantAppealHistoryService.markers"
+                    [active_marker]="tenantAppealHistoryService.active_marker"
+                    [refresh_markers]="tenantAppealHistoryService.refresh_markers"
+                    (onMarkerClick)="onMarkerClick($event)"
+                >
+                </app-map>
+                <button class="map" (click)="map = false">
+                    Вернуться
+                </button>
+            </ng-container>
+        </div>
+    </div>
+    <div class="appeal-chat-wrap">
+        <app-chat [messages]="this.tenantAppealHistoryService.selected_appeal ? this.tenantAppealHistoryService.selected_appeal.messages : []"
+            [id_appeal]="this.tenantAppealHistoryService.selected_appeal?.id"
+            (onMessage)="onMessage($event)"
+        >
+        </app-chat>
+    </div>
+</div>
