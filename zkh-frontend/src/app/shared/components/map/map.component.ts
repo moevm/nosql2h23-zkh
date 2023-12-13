@@ -41,6 +41,7 @@ export class MapComponent implements OnInit {
   }
 
   addMarkers(markers: GeoMarker[], active_marker: GeoMarker | null) {
+    if (!markers) return
     markers.forEach(marker => {
       let m = L.marker([marker.geotag.latitude, marker.geotag.longitude], {bubblingMouseEvents: true})
       m.setIcon(L.icon({iconUrl: "assets/marker-icon.png", iconSize: [25, 41]}))

@@ -62,55 +62,8 @@ export class TenantAppealServiceService {
   }
 
   appeals: Appeal[] = [
-    {
-      id: 1,
-      title: "afwdfewf",
-      date: new Date(),
-      description: "hvuierhvreh",
-      status: Status.NEW,
-      manager: {
-        id: 1,
-        name: "Иванов Иван Иванович"
-      },
-      address: "ff3f3",
-      geotag: {
-        longitude: 23.929392,
-        latitude: 34.124123
-      },
-      feedback: "",
-      tenant: {
-        id: 2,
-        name: "Петров Петр Петрович"
-      },
-      messages: [
-        {
-          message: "aaaaaaa aa a  aa a",
-          date: new Date(),
-          owner: {
-            id: 2,
-            name: "Петров Петр Петрович" 
-          }
-        },
-        {
-          message: "bb bb b bb bb bb b",
-          date: new Date(),
-          owner: {
-            id: 1,
-            name: "Иванов Иван Иванович" 
-          }
-        },
-        {
-          message: "c c cc ccc ccc c",
-          date: new Date(),
-          owner: {
-            id: 2,
-            name: "Петров Петр Петрович" 
-          }
-        }
-      ],
-      workers: []
-    }
+
   ]
 
-  selected_appeal: Appeal | null = this.appeals[0]
+  selected_appeal: Appeal | null = null
 }

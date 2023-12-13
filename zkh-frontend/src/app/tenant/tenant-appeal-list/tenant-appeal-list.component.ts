@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   templateUrl: './tenant-appeal-list.component.html',
   styleUrls: ['./tenant-appeal-list.component.css']
 })
-export class TenantAppealListComponent implements OnInit {
+export class TenantAppealListComponent {
   constructor(
     public tenantAppealService: TenantAppealServiceService,
     private requestService: RequestService,
@@ -27,17 +27,5 @@ export class TenantAppealListComponent implements OnInit {
 
   selectAppeal(id: number) {
     this.tenantAppealService.selectAppeal(id)
-  }
-
-  ngOnInit(): void {
-    // this.requestService.get_appeal(this.authService.role, this.authService.id).subscribe(
-    //   response => {
-    //     this.tenantAppealService.appeals = [...response]
-    //     this.tenantAppealService.selected_appeal = this.tenantAppealService.appeals[0]
-    //     this.tenantAppealService.markers = this.tenantAppealService.getMarkers()
-    //     this.tenantAppealService.active_marker = this.tenantAppealService.getActiveMarker()
-    //     this.tenantAppealService.refreshMarkers()
-    //   }
-    // )
   }
 }

@@ -49,7 +49,7 @@ export class RequestService {
     )
   }
 
-  get_schedule_work(): Observable<Activity[]> {
+  get_all_activities(): Observable<Activity[]> {
     return this.http.get<Activity[]>(
       `http://localhost:9334/activity`
     )

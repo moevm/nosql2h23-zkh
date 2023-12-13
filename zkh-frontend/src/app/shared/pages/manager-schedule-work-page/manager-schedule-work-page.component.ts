@@ -16,7 +16,7 @@ export class ManagerScheduleWorkPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.requestService.get_schedule_work().subscribe(
+    this.requestService.get_all_activities().subscribe(
       response => {
         this.scheduleService.works = [...response]
       }
