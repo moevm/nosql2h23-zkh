@@ -49,7 +49,7 @@ export class RequestService {
 
   create_appeal(tenant_id: number, body: any): Observable<Appeal> {
     return this.http.post<Appeal>(
-      `http://localhost:9334/activity?tenant_id=${tenant_id}`, body
+      `http://localhost:9334/appeal?tenant_id=${tenant_id}`, body
     )
   }
 
