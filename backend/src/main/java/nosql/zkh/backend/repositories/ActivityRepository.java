@@ -9,4 +9,6 @@ public interface ActivityRepository extends Repository<Activity, Long> {
     List<Activity> findAll();
 
     Activity save(Activity activity);
+
+    Activity findById(Long id);
 }

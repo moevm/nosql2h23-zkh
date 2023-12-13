@@ -7,10 +7,11 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 public class Appeal {
     @Id
     @GeneratedValue
-    private final Long id;
+    private Long id;
 
     private String title;
     private String description;
@@ -38,6 +39,9 @@ public class Appeal {
     @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
 
+    @Relationship(type = "BelongsTo", direction = Relationship.Direction.INCOMING)
+    public List<Message> messageList;
+
     public Appeal(Long id, String title, String description, String status, String feedback, String address, Double longitude, Double latitude, String type, LocalDateTime date) {
         this.id = id;
         this.title = title;
@@ -50,7 +54,7 @@ public class Appeal {
         this.type = type;
         this.date = date;
     }
-
+    public Appeal(){}
     public Long getId() {
         return id;
     }
