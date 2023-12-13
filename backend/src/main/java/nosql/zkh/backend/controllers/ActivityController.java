@@ -49,6 +49,11 @@ public class ActivityController {
     public ActivityDto updateStatus(@PathVariable("activity_id") Long activity_id, @RequestBody StatusDto statusDto){
         return convertToActivityDto(activityService.updateStatus(activity_id, statusDto.getStatus()));
     }
+
+    @DeleteMapping("/activity/{activity_id}/worker/{worker_id}")
+    public ActivityDto deleteWorkerFromAppeal(@PathVariable("activity_id") Long activity_id, @PathVariable("worker_id") Long worker_id){
+        return convertToActivityDto(activityService.deleteWorker(activity_id, worker_id));
+    }
     private ActivityDto convertToActivityDto(Activity activity){
         ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
         activityDto.setGeotag(new GeotagDto(activity.getLatitude(), activity.getLongitude()));

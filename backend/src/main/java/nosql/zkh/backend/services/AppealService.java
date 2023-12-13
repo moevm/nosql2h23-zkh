@@ -54,7 +54,6 @@ public class AppealService {
         Appeal appeal  = appealRepository.findById(id_appeal);
         appeal.setStatus("В работе");
         return appealRepository.save(appeal);
-
     }
 
     public Appeal createAppeal(Appeal appeal, Long tenant_id){
@@ -105,4 +104,15 @@ public class AppealService {
         appeal.setFeedback(feedback);
         return appealRepository.save(appeal);
     }
+
+    public Appeal deleteWorker(Long appeal_id, Long worker_id){
+        neo4jClient.query("MATCH (a:Worker)-[r: WorksOn]->(b:Appeal) " +
+                        "WHERE Id(a) = $worker_id AND Id(b) = $appeal_id" +
+                        " Delete r ")
+                .in( database() )
+                .bindAll(Map.of("worker_id", worker_id,"appeal_id",appeal_id ))
+                .run();
+        return appealRepository.findById(appeal_id);
+    }
+
 }

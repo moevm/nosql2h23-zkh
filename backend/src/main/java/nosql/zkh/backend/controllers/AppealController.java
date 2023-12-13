@@ -75,6 +75,11 @@ public class AppealController {
         return convertToAppealDto(appealService.addFeedback(appeal_id, feedbackDto.getFeedback()));
     }
 
+    @DeleteMapping("/appeal/{appeal_id}/worker/{worker_id}")
+    public AppealDto deleteWorkerFromAppeal(@PathVariable("appeal_id") Long appeal_id, @PathVariable("worker_id") Long worker_id){
+        return convertToAppealDto(appealService.deleteWorker(appeal_id, worker_id));
+    }
+
     private AppealDto convertToAppealDto(Appeal appeal){
         AppealDto appealDto = modelMapper.map(appeal, AppealDto.class);
         appealDto.setGeotag(new GeotagDto(appeal.getLatitude(), appeal.getLongitude()));
