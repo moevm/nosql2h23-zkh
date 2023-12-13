@@ -1,14 +1,18 @@
 import { Role, Status } from "./enumerations";
 
-export interface WorkerTask {
+export interface Appeal {
     id: number;
     title: string;
     date: Date;
     description: string;
     status: Status;
-    manager: Manager;
+    manager: Human;
     geotag: Geotag;
     address: string;
+    messages: Message[];
+    feedback: string;
+    tenant: Human;
+    workers: Human[];
 }
 
 export interface Geotag {
@@ -22,17 +26,6 @@ export interface GeoMarker {
     title: string;
 }
 
-export interface ManagerAppeal {
-    id: number;
-    title: string;
-    date: Date;
-    description: string;
-    status: Status;
-    manager: Manager;
-    geotag: Geotag;
-    address: string;
-}
-
 export interface UnassembledAppeal {
     id: number;
     title: string;
@@ -42,12 +35,12 @@ export interface UnassembledAppeal {
     geotag: Geotag;
 }
 
-export interface ScheduleWork {
+export interface Activity {
     id: number;
     title: string;
     dateStart: Date;
     dateEnd?: Date;
-    manager: Manager;
+    manager: Human;
     description: string;
     address: string;
     geotag: Geotag;
@@ -61,17 +54,23 @@ export interface UserData {
     address?: string;
 }
 
-export interface Manager {
+export interface Human {
     id: number;
     name: string;
 }
 
-export interface ScheduleWorkCreate {
+export interface ActivityCreate {
     title: string;
     dateStart: Date;
     dateEnd?: Date;
-    manager: Manager;
+    manager: Human;
     description: string;
     address: string;
     geotag: Geotag;
+}
+
+export interface Message {
+    message: string;
+    date: Date;
+    owner: Human;
 }

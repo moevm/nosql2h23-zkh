@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Role } from '../types/enumerations';
 import { Observable } from 'rxjs';
-import { ManagerAppeal, ScheduleWork, ScheduleWorkCreate, UnassembledAppeal, UserData, WorkerTask } from '../types/interfaces';
+import { Appeal, Activity, ActivityCreate, UnassembledAppeal, UserData } from '../types/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +23,8 @@ export class RequestService {
     )
   }
 
-  get_appeal(role: Role, id: number): Observable<WorkerTask[] | ManagerAppeal[]> {
-    return this.http.get<WorkerTask[] | ManagerAppeal[]>(
+  get_appeal(role: Role, id: number): Observable<Appeal[]> {
+    return this.http.get<Appeal[]>(
       `http://localhost:9334/${role.toLowerCase()}/${id}/appeal`
     )
   }
@@ -35,14 +35,14 @@ export class RequestService {
     )
   }
 
-  create_schedule_work(manager_id: number, work: ScheduleWorkCreate): Observable<ScheduleWork> {
-    return this.http.post<ScheduleWork>(
+  create_schedule_work(manager_id: number, work: ActivityCreate): Observable<Activity> {
+    return this.http.post<Activity>(
       `http://localhost:9334/activity?manager_id=${manager_id}`, work
     )
   }
 
-  get_schedule_work(): Observable<ScheduleWork[]> {
-    return this.http.get<ScheduleWork[]>(
+  get_schedule_work(): Observable<Activity[]> {
+    return this.http.get<Activity[]>(
       `http://localhost:9334/activity`
     )
   }

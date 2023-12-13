@@ -1,1 +1,19 @@
-<p>tenant-appeal-list-page works!</p>
+<div class="home-container">
+    <div class="left-container">
+        <app-tenant-appeal-list></app-tenant-appeal-list>
+    </div>
+    <div class="layout"></div>
+    <div class="right-container">
+        <app-map
+            [markers]="tenantAppealService.markers"
+            [active_marker]="tenantAppealService.active_marker"
+            [refresh_markers]="tenantAppealService.refresh_markers"
+            (onMarkerClick)="onMarkerClick($event)"
+        >
+        </app-map>
+        <button class="map">
+            <input type="checkbox" [checked]="this.tenantAppealService.only_mine" (change)="filter($event)">
+            <span>Мои обращения</span>
+        </button>
+    </div>
+</div>

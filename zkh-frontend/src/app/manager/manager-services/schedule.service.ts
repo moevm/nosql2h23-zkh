@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ScheduleWork } from 'src/app/shared/types/interfaces';
+import { Activity } from 'src/app/shared/types/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,9 @@ export class ScheduleService {
     this.selected_work = this.works.filter(w => w.id === id)[0]
   }
 
-  works: ScheduleWork[] = [
+  works: Activity[] = [
     
   ]
 
-  selected_work: ScheduleWork | null = this.works[0]
+  selected_work: Activity | null = this.works[0]
 }

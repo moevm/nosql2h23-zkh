@@ -1,0 +1,62 @@
+.schedule-container {
+    position: absolute;
+    z-index: 9999999;
+    background: var(--primary-background);
+    color: var(--popup-menu-text);
+    width: 400px;
+    font-size: 15px;
+    right: 15%;
+    height: 100vh;
+    box-shadow: 10px 0 10px 3px var(--menu-shadow),
+                -10px 0 10px 3px var(--menu-shadow);
+    animation: prolapse 200ms linear forwards;
+}
+
+.schedule-header {
+    height: 7%;
+    width: 100%;
+    padding-left: 28px;
+    padding-right: 28px;
+    display: flex;
+    border-bottom: 2px solid var(--header-underline);
+    justify-content: center;
+}
+
+.text {
+    align-self: center;
+    color: var(--header-text);
+    font-size: 17px;
+}
+
+.schedule-body {
+    height: 93%;
+    width: 100%;
+    padding: 20px;
+}
+
+.schedule {
+    padding: 15px;
+    background: var(--sign-out-text);
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.title {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.description {
+    font-size: 16px;
+}
+
+.address {
+    margin-top: 12px;
+    font-size: 16px;
+}
+
+.date {
+    text-align: end;
+}

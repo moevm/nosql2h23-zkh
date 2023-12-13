@@ -4,14 +4,9 @@
     display: flex;
 }
 
-.left-container {
+.left-container, .right-container {
     height: 100%;
-    width: calc(40% - 15px);
-}
-
-.right-container {
-    height: 100%;
-    width: calc(60% - 15px);
+    width: calc(50% - 15px);
 }
 
 .layout {

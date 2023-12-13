@@ -4,6 +4,7 @@
     </div>
     <div class="layout"></div>
     <div class="right-container">
-        <app-tenant-appeal-info></app-tenant-appeal-info>
+        <app-tenant-appeal-info *ngIf="!tenantAppealHistoryService.create_appeal"></app-tenant-appeal-info>
+        <app-create-appeal *ngIf="tenantAppealHistoryService.create_appeal"></app-create-appeal>
     </div>
 </div>
