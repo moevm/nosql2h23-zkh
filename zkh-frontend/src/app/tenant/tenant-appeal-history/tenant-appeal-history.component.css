@@ -1,0 +1,141 @@
+.tenant-appeal-list-container {
+    background-color: var(--primary-background);
+    height: 100%;
+    border: 2px solid var(--sign-out-text);
+    border-radius: 30px;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-text);
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.tenant-appeal {
+    display: flex;
+    padding: 5px 15px;
+    justify-content: space-between;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--sign-out-text);
+    margin-bottom: 8px;
+    margin-right: 5px;
+    font-size: 14px;
+    position: relative;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+button {
+    background: var(--primary-background);
+    width: 190px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid var(--sign-out-text);
+    margin-right: 8px;
+    color: var(--sign-out-text);
+    font-size: 16px;
+}
+
+.active {
+    background: var(--switch-border);
+    border: 1px solid var(--switch-border);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.title, .date, .status {
+    align-self: center;
+}
+
+.date {
+    width: 150px;
+    text-align: start;
+    margin-left: auto;
+}
+
+.status {
+    width: 87px;
+    text-align: start;
+}
+
+.title, .date, .status {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.selected {
+    background: var(--active-row);
+}
+
+.scroll-wrap {
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+}
+
+.filters-wrap {
+    cursor: pointer;
+    width: 160px;
+    margin-left: auto;
+    background: none;
+    position: relative;
+}
+
+.filters-switch {
+    display: flex;
+}
+
+.filters {
+    display: flex;
+    font-size: 13px;
+    height: 30px;
+    margin-left: auto;
+}
+
+.filters-title {
+    line-height: 30px;
+    color: var(--filters);
+}
+
+.filters-icon {
+    height: 100%;
+    display: flex;
+    margin-right: 7px;
+}
+
+.filters-icon svg {
+    align-self: center;
+}
+
+.filters-icon svg path {
+    stroke: var(--filters)
+}
+
+.open-filters-icon {
+    height: 100%;
+    display: flex;
+    margin-left: 15px;
+}
+
+.open-filters-icon svg {
+    align-self: center;
+}
+
+.open-filters-icon svg path {
+    stroke: var(--filters);
+}
+
+.create {
+    float: right;
+    margin-top: 20px;
+    cursor: pointer;
+}

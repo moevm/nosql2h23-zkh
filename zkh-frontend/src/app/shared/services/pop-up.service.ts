@@ -9,6 +9,8 @@ export class PopUpService {
 
   visible: boolean = false;
 
+  schedule_visible: boolean = false;
+
   switchVisibility(){
     this.visible = !this.visible
   }

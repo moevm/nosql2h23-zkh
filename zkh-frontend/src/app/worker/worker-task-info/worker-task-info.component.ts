@@ -17,9 +17,9 @@ export class WorkerTaskInfoComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // this.workerTaskService.selected_task = this.workerTaskService.tasks[0]
-    // this.refreshMarkers()
-    // this.workerTaskService.refreshMarkers()
+    this.workerTaskService.selected_task = this.workerTaskService.tasks[0]
+    this.refreshMarkers()
+    this.workerTaskService.refreshMarkers()
   }
 
   refreshMarkers() {

@@ -34,6 +34,9 @@ import { ManagerUnassembledPageComponent } from './shared/pages/manager-unassemb
 import { ManagerScheduleWorkPageComponent } from './shared/pages/manager-schedule-work-page/manager-schedule-work-page.component';
 import { ManagerMyAppealsPageComponent } from './shared/pages/manager-my-appeals-page/manager-my-appeals-page.component';
 import { ManagerAllAppealsPageComponent } from './shared/pages/manager-all-appeals-page/manager-all-appeals-page.component';
+import { ChatComponent } from './shared/components/chat/chat.component';
+import { CreateAppealComponent } from './tenant/create-appeal/create-appeal.component';
+import { AppealCreatorPipe } from './shared/pipes/appeal-creator.pipe';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,9 @@ import { ManagerAllAppealsPageComponent } from './shared/pages/manager-all-appea
     ManagerScheduleWorkPageComponent,
     ManagerMyAppealsPageComponent,
     ManagerAllAppealsPageComponent,
+    ChatComponent,
+    CreateAppealComponent,
+    AppealCreatorPipe
   ],
   imports: [
     BrowserModule,

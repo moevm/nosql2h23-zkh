@@ -1,1 +1,26 @@
-<p>tenant-schedule-modal works!</p>
+<div class="schedule-container">
+    <div class="schedule-header">
+        <div class="text">
+            ВНЕПЛАНОВЫЕ РАБОТЫ
+        </div>
+    </div>
+    <div class="schedule-body">
+        <div class="schedule" *ngFor="let activity of ativities">
+            <div class="date">
+                {{ (activity.dateStart | date: "dd.MM.YYYY HH:MM:ss") + 
+                (activity.dateEnd ? "-" : "") + 
+                (activity.dateEnd ? (activity.dateEnd | date: "dd.MM.YYYY HH:MM:ss") 
+                : "")}}
+            </div>
+            <div class="title">
+                {{ activity.title }}
+            </div>
+            <div class="description">
+                {{ activity.description }}
+            </div>
+            <div class="address" *ngIf="activity.address">
+                Адрес: {{ activity.address }}
+            </div>
+        </div>
+    </div>
+</div>

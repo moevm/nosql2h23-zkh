@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Status } from 'src/app/shared/types/enumerations';
-import { GeoMarker, ManagerAppeal } from 'src/app/shared/types/interfaces';
+import { GeoMarker, Appeal } from 'src/app/shared/types/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -44,9 +44,9 @@ export class ManagerAppealService {
     }
   }
 
-  appeals: ManagerAppeal[] = [
+  appeals: Appeal[] = [
     
   ]
 
-  selected_appeal: ManagerAppeal | null = this.appeals[0]
+  selected_appeal: Appeal | null = this.appeals[0]
 }

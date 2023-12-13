@@ -24,6 +24,7 @@ export class HeaderComponent {
   signOutClickHandler() {
     this.authService.logedIn = false
     this.popUpService.visible = false
+    this.popUpService.schedule_visible = false
     this.zone.run(() => { this.router.navigate(["/authorization"]) })
   }
 }
