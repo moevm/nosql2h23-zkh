@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Role } from '../types/enumerations';
 import { Observable } from 'rxjs';
-import { Appeal, Activity, ActivityCreate, UnassembledAppeal, UserData } from '../types/interfaces';
+import { Appeal, Activity, ActivityCreate, UnassembledAppeal, UserData, Message } from '../types/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +58,18 @@ export class RequestService {
       `http://localhost:9334/${role.toLowerCase()}/${id}`, {name: name, phoneNumber: phone}
     )
   }
+
+  send_message(id: number, role: Role, id_appeal: number, msg: string): Observable<Message> {
+    return this.http.post<Message>(
+      `http://localhost:9334/appeal/${id_appeal}/${role.toLowerCase()}/${id}/msg`,
+      {
+        message: msg,
+        date: new Date()
+      }
+    )
+  }
+
+
 
 
   create_schedule_work(manager_id: number, work: ActivityCreate): Observable<Activity> {

@@ -47,6 +47,10 @@
         </div>
     </div>
     <div class="appeal-chat-wrap">
-        <app-chat [messages]="this.tenantAppealHistoryService.selected_appeal ? this.tenantAppealHistoryService.selected_appeal.messages : []"></app-chat>
+        <app-chat [messages]="this.tenantAppealHistoryService.selected_appeal ? this.tenantAppealHistoryService.selected_appeal.messages : []"
+            [id_appeal]="this.tenantAppealHistoryService.selected_appeal ? this.tenantAppealHistoryService.selected_appeal.id : 0"
+            (onMessage)="onMessage($event)"
+        >
+        </app-chat>
     </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TenantAppealHistoryService } from '../tenant-services/tenant-appeal-history.service';
+import { Message } from 'src/app/shared/types/interfaces';
 
 @Component({
   selector: 'app-tenant-appeal-info',
@@ -29,5 +30,16 @@ export class TenantAppealInfoComponent implements OnInit {
 
   onMarkerClick(id: number) {
     this.tenantAppealHistoryService.selectAppeal(id)
+  }
+
+  onMessage(msg: Message) {
+    this.tenantAppealHistoryService.appeals.forEach(
+      a => {
+        if (a.id === this.tenantAppealHistoryService.selected_appeal?.id) {
+          a.messages.push(msg)
+          this.tenantAppealHistoryService.selected_appeal = a
+        }
+      }
+    )
   }
 }
