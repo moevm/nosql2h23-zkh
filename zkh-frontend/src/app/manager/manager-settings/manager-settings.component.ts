@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { RequestService } from 'src/app/shared/services/request.service';
+import * as saveAs from 'file-saver';
 
 @Component({
   selector: 'app-manager-settings',
@@ -41,6 +42,19 @@ export class ManagerSettingsComponent {
       response => {
         this.form.controls['name'].setValue(response.name)
         this.form.controls['phone'].setValue(response.phoneNumber)
+      }
+    )
+  }
+
+  import() {
+
+  }
+
+  export() {
+    this.requestService.export().subscribe(
+      response => {
+        let file = new Blob([response], { type: 'text/xml;charset=utf-8' });
+        saveAs(file, 'db_dump.xml')
       }
     )
   }
