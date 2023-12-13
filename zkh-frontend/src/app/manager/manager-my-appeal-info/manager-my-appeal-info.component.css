@@ -1,0 +1,158 @@
+.manager-appeal-info-container {
+    background-color: var(--primary-background);
+    height: 100%;
+    width: 100%;
+}
+
+.appeal-info-wrap {
+    height: calc(60% - 60px);
+    border: 2px solid var(--sign-out-text);
+    border-radius: 30px;
+}
+
+.appeal-chat-wrap {
+    height: calc(40% - 60px);
+    border: 2px solid var(--sign-out-text);
+    border-radius: 30px;
+    padding: 20px 30px;
+}
+
+.appeal-info-container {
+    height: 100%;
+    border-radius: 28px;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--primary-text);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+button.non-map {
+    width: 170px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid var(--sign-out-text);
+    color: black;
+    cursor: pointer;
+    background: var(--sign-out-text);
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+}
+
+button.map {
+    width: 170px;
+    height: 30px;
+    position: absolute;
+    z-index: 1000000;
+    top: 22px;
+    right: 22px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid var(--sign-out-text);
+    color: black;
+    cursor: pointer;
+    background: var(--sign-out-text);
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+}
+
+.appeal-description {
+    height: calc(100% - 50px);
+    background: var(--sign-out-text);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.title, .date {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.description {
+    height: calc(100% - 140px);
+    overflow: hidden;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.status, .manager, .address {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.active {
+    background: var(--switch-border);
+    width: 170px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    border: 1px solid var(--switch-border);
+    color: white;
+    font-size: 14px;
+    line-height: 28px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+select {
+    color: var(--popup-menu-text);
+    background: var(--settings-input-background);
+    border: 1px solid var(--sign-out-text);
+    outline: none;
+    height: 30px;
+    width: calc(100% - 180px);
+    padding: 6px 15px 6px 15px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+select::placeholder {
+    color: var(--sign-out-text);
+    opacity: 1;
+}
+
+select:-ms-input-placeholder {
+    color: var(--sign-out-text);
+}
+
+select::-ms-input-placeholder {
+    color: var(--sign-out-text);
+}
+
+.change-fields {
+    height: 120px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.change-status {
+    height: 30px;
+}
+
+.change-worker {
+    height: 30px;
+}

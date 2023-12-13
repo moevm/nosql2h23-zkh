@@ -1,0 +1,76 @@
+<div class="manager-appeal-info-container">
+    <div class="appeal-info-wrap">
+        <div class="appeal-info-container"
+            [style.padding.px]="map ? 0 : 20"
+        >
+            <ng-container *ngIf="managerAppealService.selected_appeal && !map">
+                <button class="non-map" (click)="map = true; refreshMarkers()">
+                    Показать на карте
+                </button>
+                <div class="appeal-description">
+                    <div class="header">
+                        <div class="title">
+                            {{ managerAppealService.selected_appeal.title }}
+                        </div>
+                        <div class="date">
+                            {{ managerAppealService.selected_appeal.date | date: "dd.MM.YYYY HH:mm:ss" }}
+                        </div>
+                    </div>
+                    <div class="description">
+                        {{ managerAppealService.selected_appeal.description }}
+                    </div>
+                    <div class="footer">
+                        <div class="status">
+                            Статус: {{ managerAppealService.selected_appeal.status }}
+                        </div>
+                        <div class="manager">
+                            Менеджер: {{ managerAppealService.selected_appeal.manager.name }}
+                        </div>
+                        <div class="address">
+                            Адрес: {{ managerAppealService.selected_appeal.address }}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="managerAppealService.selected_appeal && map">
+                <app-map
+                    [markers]="managerAppealService.markers"
+                    [active_marker]="managerAppealService.active_marker"
+                    [refresh_markers]="managerAppealService.refresh_markers"
+                    (onMarkerClick)="onMarkerClick($event)"
+                >
+                </app-map>
+                <button class="map" (click)="map = false">
+                    Вернуться
+                </button>
+            </ng-container>
+        </div>
+    </div>
+    <div class="change-fields">
+        <div class="change-status">
+            <ng-container *ngIf="this.managerAppealService.selected_appeal">
+                <select #status>
+                    <option [selected]="this.managerAppealService.selected_appeal.status.toString() === 'Новое обращение'" value="Новое обращение">Новое обращение</option>
+                    <option [selected]="this.managerAppealService.selected_appeal.status.toString() === 'Выполняется'" value="Выполняется">Выполняется</option>
+                    <option [selected]="this.managerAppealService.selected_appeal.status.toString() === 'Выполнено'" value="Выполнено">Выполнено</option>
+                </select>
+                <button class="active" (click)="changeStatus(status.value)">Изменить статус</button>
+            </ng-container>
+        </div>
+        <div class="change-worker">
+            <ng-container *ngIf="this.managerAppealService.selected_appeal">
+                <select #workerfield>
+                    <option [selected]="this.managerAppealService.selected_appeal.workers.includes(worker)" *ngFor="let worker in workers" [value]="worker.id">{{ worker.name }}</option>
+                </select>
+                <button class="active" (click)="changeWorker(workerfield.value)">Назначить</button>
+            </ng-container>
+        </div>
+    </div>
+    <div class="appeal-chat-wrap">
+        <app-chat [messages]="this.managerAppealService.selected_appeal ? this.managerAppealService.selected_appeal.messages : []"
+            [id_appeal]="this.managerAppealService.selected_appeal?.id"
+            (onMessage)="onMessage($event)"
+        >
+        </app-chat>
+    </div>
+</div>

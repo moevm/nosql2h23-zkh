@@ -37,6 +37,7 @@ import { ManagerAllAppealsPageComponent } from './shared/pages/manager-all-appea
 import { ChatComponent } from './shared/components/chat/chat.component';
 import { CreateAppealComponent } from './tenant/create-appeal/create-appeal.component';
 import { AppealCreatorPipe } from './shared/pipes/appeal-creator.pipe';
+import { ManagerMyAppealInfoComponent } from './manager/manager-my-appeal-info/manager-my-appeal-info.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { AppealCreatorPipe } from './shared/pipes/appeal-creator.pipe';
     ManagerAllAppealsPageComponent,
     ChatComponent,
     CreateAppealComponent,
-    AppealCreatorPipe
+    AppealCreatorPipe,
+    ManagerMyAppealInfoComponent
   ],
   imports: [
     BrowserModule,
