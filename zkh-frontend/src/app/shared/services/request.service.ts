@@ -76,6 +76,6 @@ export class RequestService {
   }
 
   export(): Observable<string> {
-    return this.http.get<string>(`http://localhost:9334/export`)
+    return this.http.get(`http://localhost:9334/export`, {responseType: 'text'})
   }
 }
