@@ -61,6 +61,10 @@ public class AppealService {
         appeal.setFeedback("");
         appeal = appealRepository.save(appeal);
         appeal.tenant = tenantRepository.findById(tenant_id);
+        //заглушка TODO
+        appeal.setAddress(appeal.tenant.getAddress());
+        appeal.setLatitude(appeal.tenant.getLatitude());
+        appeal.setLongitude(appeal.tenant.getLongitude());
         return appealRepository.save(appeal);
     }
     private String database() {
@@ -115,4 +119,7 @@ public class AppealService {
         return appealRepository.findById(appeal_id);
     }
 
+    public List<Appeal> getAppealByTenant(Long id){
+        return tenantRepository.findById(id).createsAppeals.stream().toList();
+    }
 }

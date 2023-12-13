@@ -17,6 +17,11 @@ public class BackupController {
         backupService.saveData(body);
         backupService.importData();
     }
+
+    @GetMapping("/import/data")
+    public String getImportData(){
+        return backupService.readData();
+    }
     @GetMapping("/export")
     public String exportData(){
         return backupService.exportData();

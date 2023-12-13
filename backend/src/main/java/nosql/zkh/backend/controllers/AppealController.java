@@ -10,6 +10,7 @@ import nosql.zkh.backend.services.AppealService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +51,10 @@ public class AppealController {
     public List<AppealDto> getAllAppealByWorker(@PathVariable("id") Long id){
         return appealService.getAppealByWorker(id).stream().map(this::convertToAppealDto).collect(Collectors.toList());
     }
+    @GetMapping("/tenant/{id}/appeal")
+    public List<AppealDto> getAllAppealByTenant(@PathVariable("id") Long id){
+        return appealService.getAppealByTenant(id).stream().map(this::convertToAppealDto).collect(Collectors.toList());
+    }
     @PostMapping("/appeal")
     public AppealDto createAppeal(@RequestParam("tenant_id") Long tenant_id, @RequestBody NewAppealDto newAppealDto){
         return convertToAppealDto(appealService.createAppeal(convertToAppeal(newAppealDto), tenant_id));
@@ -87,6 +92,10 @@ public class AppealController {
             appealDto.setManager(convertToUserDto(appeal.manager));
         if(appeal.tenant != null)
             appealDto.setTenant(convertToUserDto(appeal.tenant));
+        if(appeal.workerList == null)
+            appeal.workerList = new LinkedList<>();
+        if(appeal.messageList == null)
+            appeal.messageList = new LinkedList<>();
         appealDto.setWorkers(appeal.workerList.stream().map(this::convertToUserDto).collect(Collectors.toList()));
         appealDto.setMessages(appeal.messageList.stream().map(this::convertToMessageDto).collect(Collectors.toList()));
         return appealDto;

@@ -7,6 +7,8 @@ public class AppealDto {
     private Long id;
     private String title;
 
+    private String status;
+
     private LocalDateTime date;
 
     private UserDto manager;
@@ -49,9 +51,10 @@ public class AppealDto {
         this.workers = workersDto;
     }
 
-    public AppealDto(Long id, String title, LocalDateTime date, UserDto manager, String description, String address, String feedback, GeotagDto geotag, List<MessageDto> messages, UserDto tenant, List<UserDto> workers) {
+    public AppealDto(Long id, String title, String status, LocalDateTime date, UserDto manager, String description, String address, String feedback, GeotagDto geotag, List<MessageDto> messages, UserDto tenant, List<UserDto> workers) {
         this.id = id;
         this.title = title;
+        this.status = status;
         this.date = date;
         this.manager = manager;
         this.description = description;
@@ -127,5 +130,13 @@ public class AppealDto {
     }
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

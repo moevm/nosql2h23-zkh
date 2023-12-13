@@ -22,12 +22,16 @@ public class BackupService {
     }
 
     public void importData(){
-        neo4jClient.query("CALL apoc.import.graphml(\"http://backend:9334/import/data\", {})")
+        neo4jClient.query("MATCH ()-[r]-() DELETE r;" )
+                .in(databaseSelectionProvider.getDatabaseSelection().getValue()).run();
+        neo4jClient.query("MATCH (n) DELETE n;" )
+                .in(databaseSelectionProvider.getDatabaseSelection().getValue()).run();
+        neo4jClient.query("CALL apoc.import.graphml(\"http://backend:9334/import/data\", {batchSize: 10000, readLabels: true, storeNodeIds: false})")
                 .in(databaseSelectionProvider.getDatabaseSelection().getValue())
                 .run();
     }
     public String exportData() {
-        return neo4jClient.query("CALL apoc.export.graphml.all(null, {stream:true})" +
+        return neo4jClient.query("CALL apoc.export.graphml.all(null, {stream:true, useTypes:true})" +
                 " YIELD file, nodes, relationships, properties, data as data" +
                 " RETURN nodes, relationships, properties, data")
                 .in(databaseSelectionProvider.getDatabaseSelection().getValue())

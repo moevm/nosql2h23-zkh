@@ -8,6 +8,7 @@ import nosql.zkh.backend.services.ActivityService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,6 +59,8 @@ public class ActivityController {
         ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
         activityDto.setGeotag(new GeotagDto(activity.getLatitude(), activity.getLongitude()));
         activityDto.setManager(new ManagerDto(activity.manager.getId(), activity.manager.getName()));
+        if(activity.workerList == null)
+            activity.workerList = new LinkedList<>();
         activityDto.setWorkers(activity.workerList.stream().map(this::convertToUserDto).collect(Collectors.toList()));
         return activityDto;
     }
