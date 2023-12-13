@@ -26,7 +26,7 @@ public class BackupService {
                 .in(databaseSelectionProvider.getDatabaseSelection().getValue()).run();
         neo4jClient.query("MATCH (n) DELETE n;" )
                 .in(databaseSelectionProvider.getDatabaseSelection().getValue()).run();
-        neo4jClient.query("CALL apoc.import.graphml(\"http://backend:9334/import/data\", {batchSize: 10000, readLabels: true, storeNodeIds: false})")
+        neo4jClient.query("CALL apoc.import.graphml(\"http://backend:9334/import/data\", {batchSize: 10000, readLabels: true})")
                 .in(databaseSelectionProvider.getDatabaseSelection().getValue())
                 .run();
     }
