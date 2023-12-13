@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { RequestService } from 'src/app/shared/services/request.service';
 
 @Component({
   selector: 'app-manager-settings',
@@ -9,7 +10,8 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class ManagerSettingsComponent {
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    public requestService: RequestService
   ) {
 
   }
@@ -30,9 +32,16 @@ export class ManagerSettingsComponent {
   }
 
   saveSettings() {
-    console.log(
+    this.requestService.save_settings(
+      this.authService.role,
+      this.authService.id,
       this.form.value.name,
       this.form.value.phone
+    ).subscribe(
+      response => {
+        this.form.controls['name'].setValue(response.name)
+        this.form.controls['phone'].setValue(response.phoneNumber)
+      }
     )
   }
 }

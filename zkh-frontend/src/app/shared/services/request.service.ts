@@ -23,7 +23,11 @@ export class RequestService {
     )
   }
 
-
+  get_all_activities(): Observable<Activity[]> {
+    return this.http.get<Activity[]>(
+      `http://localhost:9334/activity`
+    )
+  }
 
   get_unassembled(): Observable<UnassembledAppeal[]> {
     return this.http.get<UnassembledAppeal[]>(
@@ -43,15 +47,24 @@ export class RequestService {
     )
   }
 
+  create_appeal(tenant_id: number, body: any): Observable<Appeal> {
+    return this.http.post<Appeal>(
+      `http://localhost:9334/activity?tenant_id=${tenant_id}`, body
+    )
+  }
+
+  save_settings(role: Role, id: number, name: string, phone: string): Observable<{name: string, phoneNumber: string}> {
+    return this.http.put<{name: string, phoneNumber: string}>(
+      `http://localhost:9334/${role.toLowerCase()}/${id}`, {name: name, phoneNumber: phone}
+    )
+  }
+
+
   create_schedule_work(manager_id: number, work: ActivityCreate): Observable<Activity> {
     return this.http.post<Activity>(
       `http://localhost:9334/activity?manager_id=${manager_id}`, work
     )
   }
 
-  get_all_activities(): Observable<Activity[]> {
-    return this.http.get<Activity[]>(
-      `http://localhost:9334/activity`
-    )
-  }
+  
 }

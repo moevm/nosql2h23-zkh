@@ -26,28 +26,21 @@ export class CreateAppealComponent {
   })
 
   createAppeal() {
-    // this.requestService.create_schedule_work(this.authService.id, {
-    //   title: this.form.value.title as string,
-    //   description: this.form.value.description as string,
-    //   geotag: {
-    //     longitude: 39,
-    //     latitude: 56
-    //   },
-    //   manager: {
-    //     id: this.authService.id,
-    //     name: this.authService.name
-    //   },
-    //   address: this.form.value.address,
-    //   dateStart: new Date(),
-    //   dateEnd: new Date()
-    // }).subscribe(
-    //   response => {
-    //     this.scheduleService.works.push(response)
-    //     this.scheduleService.create_schedule = false
-    //   }
-    // )
-    console.log(
-      this.form.value
+    this.requestService.create_appeal(this.authService.id, {
+      title: this.form.value.title as string,
+      description: this.form.value.description as string,
+      address: this.form.value.address as string,
+      geotag: {
+        longitude: 39,
+        latitude: 56
+      },
+      type: this.form.value.type as string,
+      date: new Date()
+    }).subscribe(
+      response => {
+        this.tenantAppealHistoryService.appeals.push(response)
+        this.tenantAppealHistoryService.create_appeal = false
+      }
     )
   }
 }
