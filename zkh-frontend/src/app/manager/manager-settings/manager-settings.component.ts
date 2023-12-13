@@ -53,7 +53,9 @@ export class ManagerSettingsComponent {
   export() {
     this.requestService.export().subscribe(
       response => {
-        let file = new Blob([response], { type: 'text/xml;charset=utf-8' });
+        console.log(response, typeof(response))
+
+        let file = new Blob([response]);
         console.log(file)
         saveAs(file, 'db_dump.xml')
       }
