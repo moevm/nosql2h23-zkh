@@ -69,14 +69,13 @@ export class RequestService {
     )
   }
 
-
-
-
   create_schedule_work(manager_id: number, work: ActivityCreate): Observable<Activity> {
     return this.http.post<Activity>(
       `http://localhost:9334/activity?manager_id=${manager_id}`, work
     )
   }
 
-  
+  export(): Observable<string> {
+    return this.http.get<string>(`http://localhost:9334/export`)
+  }
 }

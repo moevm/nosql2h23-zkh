@@ -27,6 +27,29 @@
                 >
             </div>
         </form>
+
+        <div class="import-export-container">
+            <div class="import-wrap">
+                <div class="header">
+                    Импорт
+                </div>
+                <div class="file-picker">
+                    <input type="file">
+                </div>
+                <div class="body">
+                    <button class="active" (click)="import()">Импортировать</button>
+                </div>
+            </div>
+            <div class="export-wrap">
+                <div class="header">
+                    Экспорт
+                </div>
+                <div class="body">
+                    <button class="active" (click)="export()">Экспортировать</button>
+                </div>
+            </div>
+        </div>
+
         <div class="btn-container">
             <button (click)="saveSettings()">
                 Сохранить
