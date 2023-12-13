@@ -8,7 +8,7 @@ import { TenantAppealHistoryService } from '../tenant-services/tenant-appeal-his
   templateUrl: './tenant-appeal-history.component.html',
   styleUrls: ['./tenant-appeal-history.component.css']
 })
-export class TenantAppealHistoryComponent implements OnInit {
+export class TenantAppealHistoryComponent {
   constructor(
     public tenantAppealHistoryService: TenantAppealHistoryService,
     private requestService: RequestService,
@@ -19,17 +19,5 @@ export class TenantAppealHistoryComponent implements OnInit {
 
   selectAppeal(id: number) {
     this.tenantAppealHistoryService.selectAppeal(id)
-  }
-
-  ngOnInit(): void {
-    this.requestService.get_appeal(this.authService.role, this.authService.id).subscribe(
-      response => {
-        this.tenantAppealHistoryService.appeals = [...response]
-        this.tenantAppealHistoryService.selected_appeal = this.tenantAppealHistoryService.appeals[0]
-        this.tenantAppealHistoryService.markers = this.tenantAppealHistoryService.getMarkers()
-        this.tenantAppealHistoryService.active_marker = this.tenantAppealHistoryService.getActiveMarker()
-        this.tenantAppealHistoryService.refreshMarkers()
-      }
-    )
   }
 }
