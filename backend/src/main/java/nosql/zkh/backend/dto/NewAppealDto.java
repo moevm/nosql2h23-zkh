@@ -1,7 +1,5 @@
 package nosql.zkh.backend.dto;
 
-import java.time.LocalDateTime;
-
 public class NewAppealDto {
 
     private String title;
@@ -14,9 +12,9 @@ public class NewAppealDto {
 
     private String type;
 
-    private LocalDateTime date;
+    private String date;
 
-    public NewAppealDto(String title, String description, String address, GeotagDto geotag, String type, LocalDateTime date) {
+    public NewAppealDto(String title, String description, String address, GeotagDto geotag, String type, String date) {
         this.title = title;
         this.description = description;
         this.address = address;
@@ -67,11 +65,11 @@ public class NewAppealDto {
         this.type = type;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

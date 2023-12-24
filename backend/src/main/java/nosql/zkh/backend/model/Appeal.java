@@ -4,7 +4,6 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -28,7 +27,7 @@ public class Appeal {
 
     private String type;
 
-    private LocalDateTime date;
+    private String date;
 
     @Relationship(type = "Controls", direction = Relationship.Direction.INCOMING)
     public Manager manager;
@@ -42,7 +41,7 @@ public class Appeal {
     @Relationship(type = "BelongsTo", direction = Relationship.Direction.INCOMING)
     public List<Message> messageList;
 
-    public Appeal(Long id, String title, String description, String status, String feedback, String address, Double longitude, Double latitude, String type, LocalDateTime date) {
+    public Appeal(Long id, String title, String description, String status, String feedback, String address, Double longitude, Double latitude, String type, String date) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -123,11 +122,11 @@ public class Appeal {
         this.type = type;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

@@ -15,7 +15,8 @@ public class RunAfterStartApp {
     private final Neo4jClient neo4jClient;
 
     private final DatabaseSelectionProvider databaseSelectionProvider;
-    public RunAfterStartApp(Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) {
+    public RunAfterStartApp(Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(15);
         this.neo4jClient = neo4jClient;
         this.databaseSelectionProvider = databaseSelectionProvider;
     }

@@ -7,15 +7,15 @@ public class NewActivityDto {
 
     private String description;
 
-    private LocalDateTime dateStart;
+    private String dateStart;
 
-    private LocalDateTime dateEnd;
+    private String dateEnd;
 
     private String address;
 
     private GeotagDto geotag;
 
-    public NewActivityDto(String title, String description, LocalDateTime dateStart, LocalDateTime dateEnd, Long id_manager, String address, GeotagDto geotag) {
+    public NewActivityDto(String title, String description, String dateStart, String dateEnd, Long id_manager, String address, GeotagDto geotag) {
         this.title = title;
         this.description = description;
         this.dateStart = dateStart;
@@ -35,19 +35,19 @@ public class NewActivityDto {
         this.title = title;
     }
 
-    public LocalDateTime getDateStart() {
+    public String getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(LocalDateTime dateStart) {
+    public void setDateStart(String dateStart) {
         this.dateStart = dateStart;
     }
 
-    public LocalDateTime getDateEnd() {
+    public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(LocalDateTime dateEnd) {
+    public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
     }
 
