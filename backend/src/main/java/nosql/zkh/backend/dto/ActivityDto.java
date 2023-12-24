@@ -7,9 +7,9 @@ public class ActivityDto {
     private Long id;
     private String title;
 
-    private LocalDateTime dateStart;
+    private String dateStart;
 
-    private LocalDateTime dateEnd;
+    private String dateEnd;
 
     private ManagerDto manager;
 
@@ -21,7 +21,7 @@ public class ActivityDto {
 
     private List<UserDto> workers;
 
-    public ActivityDto(Long id, String title, LocalDateTime dateStart, LocalDateTime dateEnd, ManagerDto manager, String description, String address, GeotagDto geotag, List<UserDto> workers) {
+    public ActivityDto(Long id, String title, String dateStart, String dateEnd, ManagerDto manager, String description, String address, GeotagDto geotag, List<UserDto> workers) {
         this.id = id;
         this.title = title;
         this.dateStart = dateStart;
@@ -52,19 +52,19 @@ public class ActivityDto {
         this.title = title;
     }
 
-    public LocalDateTime getDateStart() {
+    public String getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(LocalDateTime dateStart) {
+    public void setDateStart(String dateStart) {
         this.dateStart = dateStart;
     }
 
-    public LocalDateTime getDateEnd() {
+    public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(LocalDateTime dateEnd) {
+    public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
     }
 
