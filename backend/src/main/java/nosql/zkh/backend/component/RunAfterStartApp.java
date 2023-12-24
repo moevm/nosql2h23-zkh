@@ -8,19 +8,22 @@ import org.springframework.data.neo4j.core.Neo4jClient;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class RunAfterStartApp {
     private final Neo4jClient neo4jClient;
 
     private final DatabaseSelectionProvider databaseSelectionProvider;
-    public RunAfterStartApp(Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) {
+    public RunAfterStartApp(Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(15);
         this.neo4jClient = neo4jClient;
         this.databaseSelectionProvider = databaseSelectionProvider;
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void runAfterStarApp(){
+    public void runAfterStarApp() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(15);
         if(!existEntity()){
             this.neo4jClient
                     .query(LoadQuery.load("/usr/local/lib/init.cypher"))

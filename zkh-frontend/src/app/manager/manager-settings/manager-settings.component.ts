@@ -25,9 +25,6 @@ export class ManagerSettingsComponent {
   })
 
   ngOnInit(): void {
-    // this.form.controls['first_name'].setValue(this.authService.first_name)
-    // this.form.controls['last_name'].setValue(this.authService.last_name)
-    // this.form.controls['patronymic_name'].setValue(this.authService.patronymic_name)
     this.form.controls['name'].setValue(this.authService.name)
     this.form.controls['phone'].setValue(this.authService.phone)
   }
@@ -46,17 +43,23 @@ export class ManagerSettingsComponent {
     )
   }
 
-  import() {
-
+  import(el: HTMLInputElement) {
+    if (!el) return
+    if (!el.files) return
+    let file: File = el.files[0]
+    if (file === undefined) return
+    file.text().then(content => {
+      this.requestService.import(content).subscribe(
+        () => {},
+        err => {console.log(err)}
+      )
+    }).catch(err => console.log(err))
   }
 
   export() {
     this.requestService.export().subscribe(
       response => {
-        console.log(response, typeof(response))
-
         let file = new Blob([response]);
-        console.log(file)
         saveAs(file, 'db_dump.xml')
       }
     )

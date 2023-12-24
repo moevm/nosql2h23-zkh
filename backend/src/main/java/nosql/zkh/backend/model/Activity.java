@@ -28,16 +28,16 @@ public class Activity {
 
     private String type;
 
-    private LocalDateTime dateStart;
+    private String dateStart;
 
-    private LocalDateTime dateEnd;
+    private String dateEnd;
 
     @Relationship(type = "Creates", direction = Relationship.Direction.INCOMING)
     public Manager manager;
 
     @Relationship(type = "WorksOn", direction = Relationship.Direction.INCOMING)
     public List<Worker> workerList;
-    public Activity(Long id, String title, String description, String status, String feedback, String address, Double longitude, Double latitude, String type, LocalDateTime dateStart, LocalDateTime dateEnd) {
+    public Activity(Long id, String title, String description, String status, String feedback, String address, Double longitude, Double latitude, String type, String dateStart, String dateEnd) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -126,19 +126,19 @@ public class Activity {
         this.type = type;
     }
 
-    public LocalDateTime getDateStart() {
+    public String getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(LocalDateTime dateStart) {
+    public void setDateStart(String dateStart) {
         this.dateStart = dateStart;
     }
 
-    public LocalDateTime getDateEnd() {
+    public String getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(LocalDateTime dateEnd) {
+    public void setDateEnd(String dateEnd) {
         this.dateEnd = dateEnd;
     }
 }

@@ -34,10 +34,10 @@
                     Импорт
                 </div>
                 <div class="file-picker">
-                    <input type="file">
+                    <input type="file" #importinput>
                 </div>
                 <div class="body">
-                    <button class="active" (click)="import()">Импортировать</button>
+                    <button class="active" (click)="import(importinput)">Импортировать</button>
                 </div>
             </div>
             <div class="export-wrap">

@@ -9,7 +9,7 @@ public class AppealDto {
 
     private String status;
 
-    private LocalDateTime date;
+    private String date;
 
     private UserDto manager;
 
@@ -51,7 +51,7 @@ public class AppealDto {
         this.workers = workersDto;
     }
 
-    public AppealDto(Long id, String title, String status, LocalDateTime date, UserDto manager, String description, String address, String feedback, GeotagDto geotag, List<MessageDto> messages, UserDto tenant, List<UserDto> workers) {
+    public AppealDto(Long id, String title, String status, String date, UserDto manager, String description, String address, String feedback, GeotagDto geotag, List<MessageDto> messages, UserDto tenant, List<UserDto> workers) {
         this.id = id;
         this.title = title;
         this.status = status;
@@ -85,11 +85,11 @@ public class AppealDto {
         this.title = title;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date){
+    public void setDate(String date){
         this.date = date;
     }
 
