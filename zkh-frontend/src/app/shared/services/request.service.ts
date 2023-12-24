@@ -78,4 +78,8 @@ export class RequestService {
   export(): Observable<string> {
     return this.http.get(`http://localhost:9334/export`, {responseType: 'text'})
   }
+
+  import(content: string) {
+    return this.http.post(`http://localhost:9334/import`, content)
+  }
 }
