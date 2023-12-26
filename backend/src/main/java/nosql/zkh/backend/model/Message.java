@@ -4,7 +4,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
-import java.time.LocalDateTime;
+
 
 public class Message {
     @Id
@@ -13,7 +13,7 @@ public class Message {
 
     private String message;
 
-    private LocalDateTime date;
+    private String date;
 
     @Relationship(type = "BelongsTo")
     public Appeal appeal;
@@ -24,7 +24,7 @@ public class Message {
     @Relationship(type = "Sent", direction = Relationship.Direction.INCOMING)
     public Tenant tenant;
 
-    public Message(Long id, String message, LocalDateTime date) {
+    public Message(Long id, String message, String date) {
         this.id = id;
         this.message = message;
         this.date = date;
@@ -45,11 +45,11 @@ public class Message {
         this.message = message;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

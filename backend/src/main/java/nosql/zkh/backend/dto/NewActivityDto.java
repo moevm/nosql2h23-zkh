@@ -1,6 +1,5 @@
 package nosql.zkh.backend.dto;
 
-import java.time.LocalDateTime;
 
 public class NewActivityDto {
     private String title;
