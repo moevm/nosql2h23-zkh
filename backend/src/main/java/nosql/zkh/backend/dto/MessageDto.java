@@ -1,18 +1,18 @@
 package nosql.zkh.backend.dto;
 
-import java.time.LocalDateTime;
+
 
 public class MessageDto {
     private String message;
 
-    private LocalDateTime date;
+    private String date;
 
     private UserDto owner;
 
     public MessageDto() {
     }
 
-    public MessageDto(String message, LocalDateTime date, UserDto owner) {
+    public MessageDto(String message, String date, UserDto owner) {
         this.message = message;
         this.date = date;
         this.owner = owner;
@@ -26,11 +26,11 @@ public class MessageDto {
         this.message = message;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

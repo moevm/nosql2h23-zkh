@@ -41,7 +41,7 @@ public class BackupService {
                 .get("data").toString();
     }
     public void saveData(String data) {
-        try(FileWriter writer = new FileWriter("db.graphml", false)) {
+        try(FileWriter writer = new FileWriter("/usr/local/lib/db.graphml", false)) {
             writer.write(data);
         }
         catch(IOException ex){
@@ -51,7 +51,7 @@ public class BackupService {
 
     public String readData(){
         StringBuilder data = new StringBuilder();
-        try(FileReader reader = new FileReader("db.graphml"))
+        try(FileReader reader = new FileReader("/usr/local/lib/db.graphml"))
         {
             char[] buf = new char[256];
             int c;

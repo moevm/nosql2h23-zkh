@@ -1,5 +1,6 @@
 package nosql.zkh.backend.component;
 
+import nosql.zkh.backend.services.BackupService;
 import nosql.zkh.backend.utils.LoadQuery;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -14,8 +15,10 @@ import java.util.concurrent.TimeUnit;
 public class RunAfterStartApp {
     private final Neo4jClient neo4jClient;
 
+    private final BackupService backupService;
     private final DatabaseSelectionProvider databaseSelectionProvider;
-    public RunAfterStartApp(Neo4jClient neo4jClient, DatabaseSelectionProvider databaseSelectionProvider) throws InterruptedException {
+    public RunAfterStartApp(Neo4jClient neo4jClient, BackupService backupService, DatabaseSelectionProvider databaseSelectionProvider) throws InterruptedException {
+        this.backupService = backupService;
         TimeUnit.SECONDS.sleep(15);
         this.neo4jClient = neo4jClient;
         this.databaseSelectionProvider = databaseSelectionProvider;
@@ -25,10 +28,7 @@ public class RunAfterStartApp {
     public void runAfterStarApp() throws InterruptedException {
         TimeUnit.SECONDS.sleep(15);
         if(!existEntity()){
-            this.neo4jClient
-                    .query(LoadQuery.load("/usr/local/lib/init.cypher"))
-                    .in(database())
-                    .run();
+            this.backupService.importData();
         }
     }
     private String database() {

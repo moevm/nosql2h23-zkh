@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<key id="address" for="node" attr.name="address" attr.type="string"/>
+<key id="latitude" for="node" attr.name="latitude" attr.type="double"/>
+<key id="description" for="node" attr.name="description" attr.type="string"/>
+<key id="login" for="node" attr.name="login" attr.type="string"/>
+<key id="title" for="node" attr.name="title" attr.type="string"/>
+<key id="type" for="node" attr.name="type" attr.type="string"/>
+<key id="message" for="node" attr.name="message" attr.type="string"/>
+<key id="labels" for="node" attr.name="labels" attr.type="string"/>
+<key id="feedback" for="node" attr.name="feedback" attr.type="string"/>
+<key id="password" for="node" attr.name="password" attr.type="string"/>
+<key id="phoneNumber" for="node" attr.name="phoneNumber" attr.type="string"/>
+<key id="dateStart" for="node" attr.name="dateStart" attr.type="string"/>
+<key id="name" for="node" attr.name="name" attr.type="string"/>
+<key id="longitude" for="node" attr.name="longitude" attr.type="double"/>
+<key id="status" for="node" attr.name="status" attr.type="string"/>
+<key id="label" for="edge" attr.name="label" attr.type="string"/>
+<graph id="G" edgedefault="directed">
+<node id="n0" labels=":Manager"><data key="labels">:Manager</data><data key="login">manager1</data><data key="name">Иванов Иван</data><data key="password">manager1</data><data key="phoneNumber">89999999999</data></node>
+<node id="n1" labels=":Manager"><data key="labels">:Manager</data><data key="login">manager2</data><data key="name">Петров Петр</data><data key="password">manager2</data><data key="phoneNumber">88888888888</data></node>
+<node id="n2" labels=":Worker"><data key="labels">:Worker</data><data key="name">Николаева Мария</data><data key="login">worker1</data><data key="password">worker1</data><data key="phoneNumber">87777777777</data></node>
+<node id="n3" labels=":Worker"><data key="labels">:Worker</data><data key="login">worker2</data><data key="name">Лапин Макар</data><data key="password">worker2</data><data key="phoneNumber">86666666666</data></node>
+<node id="n4" labels=":Tenant"><data key="labels">:Tenant</data><data key="login">tenant1</data><data key="latitude">59.963291</data><data key="phoneNumber">85555555555</data><data key="name">Никонов Даниил Фёдорович</data><data key="address">улица Ленина д 34 кв 17</data><data key="longitude">30.300408</data><data key="password">tenant1</data></node>
+<node id="n5" labels=":Tenant"><data key="labels">:Tenant</data><data key="login">tenant2</data><data key="latitude">59.960107</data><data key="phoneNumber">84444444444</data><data key="name">Лебедева Василиса</data><data key="address">Большая Зеленина улица д 7 кв 3</data><data key="longitude">30.294767</data><data key="password">tenant2</data></node>
+<node id="n6" labels=":Activity"><data key="labels">:Activity</data><data key="address">Малый проспект Петроградской стороны, 54-56</data><data key="latitude">56.0</data><data key="dateStart">2023-12-27T00:00:00.000Z</data><data key="longitude">39.0</data><data key="description">Будет отключено горячего водоснабжения в связи с ремонтом труб</data><data key="title">Отключение горячего водоснабжения</data></node>
+<node id="n7" labels=":Activity"><data key="labels">:Activity</data><data key="latitude">56.0</data><data key="title">Чистка дороги</data><data key="dateStart">2023-12-29T00:00:00.000Z</data><data key="longitude">39.0</data><data key="description">Будет проведена отчиска дорог возле дома. Просьюа не парковать машины!!!</data><data key="address">Стрельнинская улица, 12</data></node>
+<node id="n8" labels=":Appeal"><data key="labels">:Appeal</data><data key="type">Электрика</data><data key="date">2023-12-26T08:48:24.613Z</data><data key="description">Перегорела лампа в подъезде на третьем этаже</data><data key="title">Перегорела лампа</data><data key="feedback"></data><data key="longitude">30.300408</data><data key="latitude">59.963291</data><data key="address">улица Ленина д 34 кв 17</data><data key="status">В работе</data></node>
+<node id="n9" labels=":Appeal"><data key="labels">:Appeal</data><data key="type">Электрика</data><data key="date">2023-12-26T08:49:16.214Z</data><data key="title">Сломалс лифт</data><data key="description">Перестал работать грузовой лифт</data><data key="feedback"></data><data key="status">Новое обращение</data><data key="longitude">30.300408</data><data key="latitude">59.963291</data><data key="address">улица Ленина д 34 кв 17</data></node>
+<node id="n10" labels=":Appeal"><data key="labels">:Appeal</data><data key="type">Электрика</data><data key="date">2023-12-26T08:50:29.129Z</data><data key="description">Не работает звонок домофона</data><data key="title">Не работает домофон</data><data key="feedback"></data><data key="status">Новое обращение</data><data key="longitude">30.294767</data><data key="latitude">59.960107</data><data key="address">Большая Зеленина улица д 7 кв 3</data></node>
+<node id="n11" labels=":Appeal"><data key="labels">:Appeal</data><data key="type">Сантехника</data><data key="date">2023-12-26T08:51:00.446Z</data><data key="description">Капает по трубам в коробе.</data><data key="title">Прорвало трубу канализации</data><data key="feedback"></data><data key="longitude">30.294767</data><data key="latitude">59.960107</data><data key="address">Большая Зеленина улица д 7 кв 3</data><data key="status">В работе</data></node>
+<node id="n12" labels=":Message"><data key="labels">:Message</data><data key="date">2023-12-26T08:52:02.132</data><data key="message">Перегорела только одна лампа?</data></node>
+<node id="n13" labels=":Message"><data key="labels">:Message</data><data key="date">2023-12-26T08:52:57.029</data><data key="message">Критично ли капает?</data></node>
+<node id="n14" labels=":Message"><data key="labels">:Message</data><data key="date">2023-12-26T08:53:55.181</data><data key="message">Нет</data></node>
+<edge id="e0" source="n1" target="n7" label="Creates"><data key="label">Creates</data></edge>
+<edge id="e1" source="n0" target="n6" label="Creates"><data key="label">Creates</data></edge>
+<edge id="e2" source="n1" target="n11" label="Controls"><data key="label">Controls</data></edge>
+<edge id="e3" source="n4" target="n9" label="Creates"><data key="label">Creates</data></edge>
+<edge id="e4" source="n0" target="n8" label="Controls"><data key="label">Controls</data></edge>
+<edge id="e5" source="n0" target="n12" label="Sent"><data key="label">Sent</data></edge>
+<edge id="e6" source="n1" target="n13" label="Sent"><data key="label">Sent</data></edge>
+<edge id="e7" source="n12" target="n8" label="BelongsTo"><data key="label">BelongsTo</data></edge>
+<edge id="e10" source="n3" target="n11" label="WorksOn"><data key="label">WorksOn</data></edge>
+<edge id="e11" source="n5" target="n10" label="Creates"><data key="label">Creates</data></edge>
+<edge id="e13" source="n4" target="n8" label="Creates"><data key="label">Creates</data></edge>
+<edge id="e14" source="n2" target="n8" label="WorksOn"><data key="label">WorksOn</data></edge>
+<edge id="e20" source="n5" target="n11" label="Creates"><data key="label">Creates</data></edge>
+<edge id="e21" source="n5" target="n14" label="Sent"><data key="label">Sent</data></edge>
+<edge id="e22" source="n13" target="n11" label="BelongsTo"><data key="label">BelongsTo</data></edge>
+<edge id="e23" source="n14" target="n11" label="BelongsTo"><data key="label">BelongsTo</data></edge>
+</graph>
+</graphml>
